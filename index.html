@@ -115,29 +115,11 @@
       padding: 132px 0 76px;
       overflow: hidden;
       border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 18% 78%, rgba(91, 124, 255, .18), transparent 26rem),
+        linear-gradient(145deg, #0b0b0c 0%, #0c1324 58%, #07080b 100%);
       display: grid;
       align-items: end;
-    }
-
-    .hero-media {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      display: grid;
-      grid-template-columns: 1.18fr .82fr;
-      opacity: .42;
-    }
-
-    .hero-media img {
-      height: 100%;
-      object-fit: cover;
-      filter: saturate(.86) contrast(1.04);
-    }
-
-    .hero-media img:nth-child(2) {
-      object-fit: contain;
-      padding: 8vh 4vw 4vh;
-      background: #101114;
     }
 
     .hero::after {
@@ -146,8 +128,8 @@
       inset: 0;
       z-index: -1;
       background:
-        linear-gradient(90deg, rgba(11, 11, 12, .96) 0%, rgba(11, 11, 12, .72) 48%, rgba(11, 11, 12, .88) 100%),
-        linear-gradient(0deg, #0b0b0c 0%, rgba(11, 11, 12, .24) 42%, rgba(11, 11, 12, .42) 100%);
+        linear-gradient(90deg, rgba(11, 11, 12, .72) 0%, rgba(11, 11, 12, .16) 54%, rgba(11, 11, 12, .56) 100%),
+        linear-gradient(0deg, #0b0b0c 0%, rgba(11, 11, 12, 0) 46%, rgba(11, 11, 12, .42) 100%);
     }
 
     .hero-copy {
@@ -414,14 +396,6 @@
     }
 
     @media (max-width: 900px) {
-      .hero-media {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-media img:nth-child(2) {
-        display: none;
-      }
-
       h1 {
         font-size: 5.35rem;
       }
@@ -518,10 +492,6 @@
 
   <main>
     <section class="hero" aria-label="takutonkatsu">
-      <div class="hero-media" aria-hidden="true">
-        <img src="./assets/hexagon-feature.png" alt="">
-        <img src="./assets/retina-share.png" alt="">
-      </div>
       <div class="hero-copy">
         <img class="home-mark" src="./assets/takutonkatsu-icon.png" alt="">
         <p class="kicker">Tactics / Kankaku</p>
