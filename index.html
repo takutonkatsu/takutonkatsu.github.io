@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="takutonkatsuの公式サイトです。HexagonとRetinaなど、感覚と戦略で遊ぶ小さなゲームを公開しています。">
+  <meta name="description" content="takutonkatsuの公式サイトです。TacticsとKankakuをテーマに、考える遊びと感じる遊びを小さなゲームにしています。">
   <meta property="og:url" content="https://takutonkatsu.com/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="takutonkatsu">
-  <meta property="og:description" content="感覚と戦略で遊ぶ、小さなゲームを作っています。">
-  <meta property="og:image" content="https://takutonkatsu.com/assets/hexagon-feature.png">
+  <meta property="og:description" content="考える遊びと、感じる遊び。その両方を小さなゲームにしています。">
+  <meta property="og:image" content="https://takutonkatsu.com/assets/takutonkatsu-icon.png">
   <link rel="icon" type="image/png" href="./assets/takutonkatsu-icon.png">
   <link rel="apple-touch-icon" href="./assets/takutonkatsu-icon.png">
   <title>takutonkatsu</title>
@@ -71,10 +71,20 @@
     }
 
     .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-size: .95rem;
       font-weight: 900;
       letter-spacing: .02em;
       text-decoration: none;
+    }
+
+    .brand img {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      object-fit: cover;
     }
 
     .tabs {
@@ -245,6 +255,42 @@
       color: var(--muted);
       font-size: 1.2rem;
       font-weight: 760;
+    }
+
+    .meaning-list {
+      display: grid;
+      gap: 22px;
+    }
+
+    .meaning-item {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .meaning-letter {
+      color: var(--ink);
+      font-size: 3.2rem;
+      font-weight: 950;
+      line-height: .9;
+    }
+
+    .meaning-item strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+      font-weight: 950;
+      letter-spacing: .04em;
+    }
+
+    .meaning-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 720;
     }
 
     .games {
@@ -426,6 +472,15 @@
         font-size: 1.12rem;
       }
 
+      .meaning-item {
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      .meaning-letter {
+        font-size: 2.4rem;
+      }
+
       section {
         padding: 62px 0;
       }
@@ -444,9 +499,12 @@
 <body>
   <header class="site-header">
     <nav class="nav" aria-label="サイト内ナビゲーション">
-      <a class="brand" href="/">takutonkatsu</a>
+      <a class="brand" href="/">
+        <img src="./assets/takutonkatsu-icon.png" alt="">
+        <span>takutonkatsu</span>
+      </a>
       <div class="tabs">
-        <a href="#mission">Mission</a>
+        <a href="#concept">Concept</a>
         <a href="#games">Games</a>
         <a href="#contact">Contact</a>
       </div>
@@ -461,9 +519,9 @@
       </div>
       <div class="hero-copy">
         <img class="home-mark" src="./assets/takutonkatsu-icon.png" alt="">
-        <p class="kicker">Small Games for Sharp Senses</p>
+        <p class="kicker">Tactics / Kankaku</p>
         <h1>takutonkatsu</h1>
-        <p class="lead">感覚と戦略で遊ぶ、小さなゲームを作っています。</p>
+        <p class="lead">考える遊びと、感じる遊び。その両方を小さなゲームにしています。</p>
         <div class="hero-links">
           <a class="button yellow" href="/Hexagon/">Hexagonを見る</a>
           <a class="button light" href="/Retina/">Retinaで遊ぶ</a>
@@ -471,13 +529,29 @@
       </div>
     </section>
 
-    <section id="mission" aria-labelledby="mission-title">
+    <section id="concept" aria-labelledby="concept-title">
       <div class="section-inner mission-grid">
         <div>
-          <p class="section-label">Mission</p>
-          <h2 id="mission-title">短いルールから、深い遊びへ。</h2>
+          <p class="section-label">Concept</p>
+          <h2 id="concept-title">TacticsとKankaku。</h2>
         </div>
-        <p class="mission-text">すぐに始められて、少しずつ上手くなれるゲームを作っています。見る、考える、つなげる、試す。その小さな反復が気持ちよく続くことを大切にしています。</p>
+        <div class="meaning-list" aria-label="TK monogramの意味">
+          <div class="meaning-item">
+            <span class="meaning-letter">T</span>
+            <div>
+              <strong>Tactics</strong>
+              <p>一手を選び、盤面を読み、次の展開を考える遊び。</p>
+            </div>
+          </div>
+          <div class="meaning-item">
+            <span class="meaning-letter">K</span>
+            <div>
+              <strong>Kankaku</strong>
+              <p>色、タイミング、違和感、手触りを感じ取る遊び。</p>
+            </div>
+          </div>
+          <p class="mission-text">takutonkatsuは、その両方を小さなゲームにする個人ブランドです。</p>
+        </div>
       </div>
     </section>
 
@@ -495,7 +569,7 @@
                 <img src="./assets/hexagon-icon.png" alt="">
                 <h3>Hexagon</h3>
               </div>
-              <p class="tagline">リアルタイム対戦ボールパズル</p>
+              <p class="tagline">Tactics: リアルタイム対戦ボールパズル</p>
               <p class="desc">同じ色を6つつなげて消す対戦ゲーム。連鎖を狙い、盤面を整え、相手より先に勝利をつかみます。</p>
               <div class="game-actions">
                 <a class="button yellow" href="/Hexagon/">公式サイトを見る</a>
@@ -512,7 +586,7 @@
                 <img src="./assets/retina-icon.png" alt="">
                 <h3>Retina</h3>
               </div>
-              <p class="tagline">RGB色彩感覚ゲーム <span class="rgb" aria-hidden="true"><span></span><span></span><span></span></span></p>
+              <p class="tagline">Kankaku: RGB色彩感覚ゲーム <span class="rgb" aria-hidden="true"><span></span><span></span><span></span></span></p>
               <p class="desc">表示された色のRGB値を推測し、色を見る精度を試すゲーム。Webブラウザからすぐに遊べます。</p>
               <div class="game-actions">
                 <a class="button light" href="/Retina/">今すぐ遊ぶ</a>
@@ -537,7 +611,7 @@
 
   <footer>
     <span>&copy; 2026 Takutonkatsu</span>
-    <span>Games from Japan</span>
+    <span>Tactics / Kankaku</span>
   </footer>
 </body>
 </html>
