@@ -9,6 +9,8 @@
   <meta property="og:title" content="takutonkatsu">
   <meta property="og:description" content="感覚と戦略で遊ぶ、小さなゲームを作っています。">
   <meta property="og:image" content="https://takutonkatsu.com/assets/hexagon-feature.png">
+  <link rel="icon" type="image/png" href="./assets/takutonkatsu-icon.png">
+  <link rel="apple-touch-icon" href="./assets/takutonkatsu-icon.png">
   <title>takutonkatsu</title>
   <style>
     :root {
@@ -141,6 +143,16 @@
     .hero-copy {
       width: min(1180px, calc(100% - 36px));
       margin: 0 auto;
+    }
+
+    .home-mark {
+      width: clamp(76px, 10vw, 124px);
+      height: clamp(76px, 10vw, 124px);
+      margin-bottom: 26px;
+      border: 1px solid rgba(244, 240, 232, .18);
+      border-radius: 22px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .38);
+      object-fit: cover;
     }
 
     .kicker,
@@ -393,6 +405,13 @@
         padding-top: 150px;
       }
 
+      .home-mark {
+        width: 76px;
+        height: 76px;
+        margin-bottom: 20px;
+        border-radius: 16px;
+      }
+
       h1 {
         font-size: 3.75rem;
       }
@@ -441,6 +460,7 @@
         <img src="./assets/retina-share.png" alt="">
       </div>
       <div class="hero-copy">
+        <img class="home-mark" src="./assets/takutonkatsu-icon.png" alt="">
         <p class="kicker">Small Games for Sharp Senses</p>
         <h1>takutonkatsu</h1>
         <p class="lead">感覚と戦略で遊ぶ、小さなゲームを作っています。</p>
