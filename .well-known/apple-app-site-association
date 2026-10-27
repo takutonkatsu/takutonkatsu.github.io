@@ -9,6 +9,24 @@
           "/Hexagon/friend/*",
           "/Hexagon/friend.html"
         ]
+      },
+      {
+        "appID": "VDL978W2MR.com.cookedout.prototype",
+        "paths": [
+          "/CookedOut/invite/",
+          "/CookedOut/invite/*",
+          "/CookedOut/layout/",
+          "/CookedOut/layout/*"
+        ]
+      },
+      {
+        "appID": "VDL978W2MR.com.cookedout.development.devicetest",
+        "paths": [
+          "/CookedOut/invite/",
+          "/CookedOut/invite/*",
+          "/CookedOut/layout/",
+          "/CookedOut/layout/*"
+        ]
       }
     ]
   }

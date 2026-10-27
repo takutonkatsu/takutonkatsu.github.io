@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#ffb23f">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://takutonkatsu.com/CookedOut/layout/">
+  <meta property="og:title" content="COOKED OUT! 厨房配置">
+  <meta property="og:description" content="アプリで開く厨房配置のリンクです">
+  <title>COOKED OUT! 厨房配置</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #ffb23f;
+      --card: #fff8ec;
+      --ink: #2b1d14;
+      --muted: #7a6656;
+      --accent: #e8452c;
+      --pending: #d9cfc3;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: max(24px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif;
+      line-height: 1.6;
+      -webkit-text-size-adjust: 100%;
+    }
+    main {
+      width: min(420px, 100%);
+      padding: 32px 24px 28px;
+      border-radius: 28px;
+      background: var(--card);
+      box-shadow: 0 10px 0 rgba(43, 29, 20, .18);
+      text-align: center;
+      animation: pop .35s cubic-bezier(.2, 1.4, .4, 1) both;
+    }
+    .logo {
+      margin: 0;
+      font-size: clamp(1.6rem, 8.6vw, 2.6rem);
+      white-space: nowrap;
+      font-weight: 900;
+      letter-spacing: .02em;
+      line-height: 1.1;
+      color: var(--accent);
+    }
+    .kind { margin: 6px 0 0; font-size: .95rem; font-weight: 800; color: var(--muted); }
+    .message { margin: 22px 0 24px; font-size: 1.15rem; font-weight: 800; }
+    .message span, .again span { display: inline-block; }
+    .store {
+      display: block;
+      padding: 16px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 900;
+      text-decoration: none;
+      transition: transform .08s ease-out;
+    }
+    .store:active { transform: scale(.96); }
+    .store.is-pending { background: var(--pending); color: var(--muted); }
+    .again { margin: 18px 0 0; font-size: .95rem; color: var(--muted); }
+    @keyframes pop { from { transform: scale(.92); opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { main { animation: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 class="logo">COOKED OUT!</h1>
+    <p class="kind">厨房配置</p>
+    <p class="message"><span>アプリで開く</span><span>厨房配置の</span><span>リンクです</span></p>
+    <span class="store is-pending" aria-disabled="true">App Store　準備中</span>
+    <p class="again"><span>入れたら</span><span>もう一度</span><span>リンクを</span><span>開いてください</span></p>
+  </main>
+</body>
+</html>
