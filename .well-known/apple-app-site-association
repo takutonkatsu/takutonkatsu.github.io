@@ -27,6 +27,15 @@
           "/CookedOut/layout/",
           "/CookedOut/layout/*"
         ]
+      },
+      {
+        "appID": "VDL978W2MR.com.takutonkatsu.cookride",
+        "paths": [
+          "/cookride/invite/",
+          "/cookride/invite/*",
+          "/cookride/layout/",
+          "/cookride/layout/*"
+        ]
       }
     ]
   }
