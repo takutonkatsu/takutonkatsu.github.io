@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; font-src 'self'; media-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#ffc43c">
+  <meta name="description" content="クックライド（COOK RIDE!）は、動物の料理人になって、注文の料理を作って届ける協力アクションゲームです。ひとりでも、2〜4人の協力でも遊べます。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="クックライド（COOK RIDE!）｜みんなで作って届ける協力料理アクション">
+  <meta property="og:description" content="切って、焼いて、盛りつけて、バイクで街へお届け。ひとりでも、4人の協力でも遊べる料理アクションです。">
+  <meta property="og:url" content="https://takutonkatsu.com/cookride/">
+  <meta property="og:image" content="https://takutonkatsu.com/cookride/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="img/icon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="preload" href="font/mplus-rounded-black.woff" as="font" type="font/woff" crossorigin>
+  <title>クックライド（COOK RIDE!）｜みんなで作って届ける協力料理アクション</title>
+  <style>
+    @font-face { font-family: "CR Rounded"; font-weight: 900; font-display: swap; src: url(font/mplus-rounded-black.woff) format("woff"); }
+    @font-face { font-family: "CR Rounded"; font-weight: 700; font-display: swap; src: url(font/mplus-rounded-bold.woff) format("woff"); }
+    :root { color-scheme: light; --ink: #4a260c; --red: #e23535; --red-deep: #7a0f15; --red-tail: #a51c1f; --cream: #fff8ec; --gold: #ffd84a; --slant: clamp(18px, 3.2vw, 48px); }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #ffc43c; color: var(--ink); font-family: "CR Rounded", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif; font-weight: 700;
+      line-height: 1.8; font-size: 16px; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    img, video { display: block; max-width: 100%; height: auto; }
+    p { margin: 0; }
+    a { color: inherit; }
+    .wrap { position: relative; z-index: 1; width: min(1080px, 100%); margin: 0 auto; padding: 0 16px; text-align: center; }
+
+    /* 色の帯と、放射の光 */
+    .band { --c: #ffc43c; position: relative; overflow: hidden; padding: calc(var(--slant) + clamp(44px, 7vw, 88px)) 0 clamp(52px, 8vw, 100px);
+      background: radial-gradient(120% 90% at 50% 30%, color-mix(in srgb, var(--c), #fff 30%), var(--c) 55%, color-mix(in srgb, var(--c), #3a1a00 14%)); }
+    .band::before { content: ""; position: absolute; left: 50%; top: 42%; width: 220vmax; height: 220vmax; margin: -110vmax 0 0 -110vmax; pointer-events: none;
+      background: repeating-conic-gradient(rgba(255, 255, 255, .17) 0 6deg, rgba(255, 255, 255, 0) 6deg 12deg);
+      -webkit-mask: radial-gradient(circle, #000 0, rgba(0, 0, 0, .5) 22%, transparent 46%); mask: radial-gradient(circle, #000 0, rgba(0, 0, 0, .5) 22%, transparent 46%); }
+    .band + .band { margin-top: calc(var(--slant) * -1); }
+    .feat.l, .lineup, .cta { clip-path: polygon(0 var(--slant), 100% 0, 100% 100%, 0 100%); }
+    .feat.r { clip-path: polygon(0 0, 100% var(--slant), 100% 100%, 0 100%); }
+
+    /* 最初の画面 */
+    .hero { padding-top: max(28px, env(safe-area-inset-top)); }
+    .hero::before { animation: spin 180s linear infinite; }
+    .hero h1 { margin: 0 auto; width: min(620px, 82%); filter: drop-shadow(0 10px 10px rgba(80, 36, 0, .32)); }
+    .tagline { margin-top: clamp(4px, 1.2vw, 12px); font-weight: 900; font-size: clamp(1.45rem, 5.6vw, 2.9rem); line-height: 1.3; color: #fff;
+      -webkit-text-stroke: .2em var(--ink); paint-order: stroke fill; letter-spacing: .02em; }
+    .tagline span { display: inline-block; }
+    .chips { list-style: none; margin: clamp(12px, 2vw, 20px) 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .chips li { padding: .1em .95em; border-radius: 999px; background: var(--cream); border: 3px solid var(--ink); font-size: clamp(.82rem, 2.6vw, 1rem); box-shadow: 0 4px 0 rgba(74, 38, 12, .28); }
+    .store { display: inline-flex; align-items: center; gap: .8rem; margin-top: clamp(18px, 3vw, 28px); padding: .6rem 1.7rem .6rem .7rem; border-radius: 999px; background: #2b1d14; color: #fff;
+      text-decoration: none; border: 3px solid #fff; box-shadow: 0 7px 0 rgba(43, 29, 20, .4), 0 16px 26px rgba(80, 36, 0, .3); }
+    .store img { width: 52px; height: 52px; border-radius: 13px; }
+    .store span { text-align: left; line-height: 1.35; }
+    .store small { display: block; font-size: .78rem; opacity: .85; }
+    .store b { font-weight: 900; font-size: 1.25rem; }
+    .store.soon { cursor: default; }
+    .hero .stage { margin-top: clamp(64px, 11vw, 96px); }
+    .bubble { position: absolute; z-index: 3; left: 1%; top: -19%; padding: .5em 1em .55em; border-radius: 50%/46%; background: #fff; border: 4px solid var(--ink); font-weight: 900; line-height: 1.25;
+      font-size: clamp(.8rem, 2.1vw, 1.25rem); color: var(--ink); rotate: -6deg; box-shadow: 0 5px 0 rgba(74, 38, 12, .25); }
+    .bubble em { display: block; font-style: normal; color: var(--red); font-size: 1.2em; }
+    .bubble::after { content: ""; position: absolute; left: 34%; bottom: -15px; width: 22px; height: 22px; background: #fff; border-right: 4px solid var(--ink); border-bottom: 4px solid var(--ink); transform: rotate(38deg) skew(12deg); }
+
+    /* ゲームの画面を入れる白い枠と、端の料理人 */
+    .stage { position: relative; width: min(840px, 78%); margin: 0 auto; }
+    .frame { position: relative; z-index: 2; padding: clamp(5px, .9vw, 11px); border-radius: clamp(14px, 2.6vw, 30px); background: #fff; rotate: -1deg;
+      box-shadow: 0 3px 0 rgba(74, 38, 12, .18), 0 22px 44px rgba(60, 28, 0, .38); }
+    .frame img, .frame video { width: 100%; border-radius: clamp(10px, 2vw, 22px); background: #2b1d14; }
+    .feat.r .frame { rotate: 1deg; }
+    .chef { position: absolute; z-index: 3; bottom: -17%; width: 27%; left: -19%; scale: -1 1; filter: drop-shadow(0 12px 10px rgba(60, 28, 0, .35)); animation: bob 3.4s ease-in-out infinite alternate; }
+    .feat.r .chef, .chef.right { left: auto; right: -19%; scale: 1; animation-delay: -1.7s; }
+    .feat.l .stage { translate: 7% 0; }
+    .feat.r .stage { translate: -7% 0; }
+
+    /* 赤いリボンの見出し */
+    .ribbon { position: relative; z-index: 4; display: inline-block; margin: clamp(-34px, -3.4vw, -14px) 0 0; rotate: -2deg; font-weight: 900; font-size: clamp(1.08rem, 5.1vw, 2.75rem); line-height: 1.2;
+      white-space: nowrap; filter: drop-shadow(0 10px 8px rgba(60, 28, 0, .32)); }
+    .feat.r .ribbon { rotate: 2deg; }
+    .ribbon span { position: relative; z-index: 1; display: block; padding: .3em .85em .36em; color: #fff; -webkit-text-stroke: .17em var(--red-deep); paint-order: stroke fill;
+      background: linear-gradient(#f04444, #d42a2a); border-radius: 4px; outline: 2px solid rgba(255, 255, 255, .9); outline-offset: -.24em; }
+    .ribbon::before, .ribbon::after { content: ""; position: absolute; top: .34em; width: 1.5em; height: 100%; background: var(--red-tail); }
+    .ribbon::before { left: -.9em; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, .5em 50%); }
+    .ribbon::after { right: -.9em; clip-path: polygon(0 0, 100% 0, calc(100% - .5em) 50%, 100% 100%, 0 100%); }
+    .pill { position: relative; z-index: 5; display: table; margin: -.35em auto 0; padding: .12em 1.2em .16em; border-radius: 999px; background: linear-gradient(#ffe36a, #ffc93a); border: 3px solid var(--ink);
+      font-weight: 900; font-size: clamp(.8rem, 2.9vw, 1.3rem); line-height: 1.5; color: #6e280a; box-shadow: 0 4px 0 rgba(74, 38, 12, .25); }
+    .desc { width: min(34em, 100%); margin: clamp(16px, 2.4vw, 26px) auto 0; padding: .85em 1.3em; border-radius: 20px; background: rgba(255, 248, 236, .93); text-align: left;
+      font-size: clamp(.95rem, 1.7vw, 1.08rem); box-shadow: 0 5px 0 rgba(74, 38, 12, .16); }
+
+    /* 24体の並び */
+    .lineup .ribbon { margin-top: 0; }
+    .marquee { position: relative; z-index: 1; margin-top: clamp(18px, 3vw, 34px); display: grid; gap: clamp(8px, 1.4vw, 16px); }
+    .track { list-style: none; margin: 0; padding: 0; display: flex; width: max-content; animation: slide 60s linear infinite; }
+    .track.rev { animation-direction: reverse; }
+    .track li { flex: none; width: clamp(96px, 15vw, 168px); padding: 0 clamp(4px, .8vw, 10px); text-align: center; }
+    .track img { height: clamp(108px, 17vw, 190px); width: auto; margin: 0 auto; filter: drop-shadow(0 8px 6px rgba(60, 28, 0, .3)); }
+    .track b { display: inline-block; margin-top: 4px; padding: 0 .7em; border-radius: 999px; background: var(--cream); border: 2px solid var(--ink); font-size: clamp(.62rem, 1.5vw, .82rem); line-height: 1.6; white-space: nowrap; }
+
+    /* 最後の案内と、下の帯 */
+    .cta .icon { width: clamp(96px, 16vw, 148px); margin: 0 auto; border-radius: 23%; border: 4px solid #fff; box-shadow: 0 8px 0 rgba(74, 38, 12, .28), 0 20px 34px rgba(60, 28, 0, .32); rotate: -4deg; }
+    .cta .tagline { margin-top: clamp(14px, 2.4vw, 24px); }
+    .trio { display: flex; justify-content: center; align-items: flex-end; margin: clamp(22px, 4vw, 40px) auto calc(clamp(52px, 8vw, 100px) * -1 - 12%); width: min(560px, 92%); }
+    .trio img { width: 36%; margin: 0 -3%; filter: drop-shadow(0 12px 10px rgba(60, 28, 0, .35)); }
+    .trio img:first-child { scale: -1 1; }
+    .trio img:nth-child(2) { width: 42%; z-index: 1; }
+    footer { position: relative; z-index: 2; padding: 26px 16px max(26px, env(safe-area-inset-bottom)); background: #2b1d14; color: #f6e7d2; text-align: center; font-size: .86rem; line-height: 1.9; }
+    footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .2em 1.4em; margin-bottom: 12px; font-size: .95rem; }
+    footer nav a { color: var(--gold); text-underline-offset: .25em; }
+    footer .fine { width: min(40em, 100%); margin: 0 auto; opacity: .82; }
+    footer .copy { margin-top: 10px; opacity: .6; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes bob { from { translate: 0 0; } to { translate: 0 -2.4%; } }
+    @keyframes slide { to { transform: translateX(-50%); } }
+    @keyframes rise { from { opacity: 0; transform: translateY(60px) scale(.94); } to { opacity: 1; transform: none; } }
+    @supports (animation-timeline: view()) {
+      @media (prefers-reduced-motion: no-preference) {
+        .feat .stage.reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 55%; }
+      }
+    }
+    @media (max-width: 719px) {
+      /* スマホ：料理人は枠の上から顔を出す */
+      .stage { width: 100%; }
+      .feat.l .stage, .feat.r .stage { translate: none; margin-top: 12vw; }
+      .band { padding-top: calc(var(--slant) + 34px); }
+      .hero { padding-top: max(24px, env(safe-area-inset-top)); }
+      .chef { z-index: 1; bottom: auto; top: -19vw; left: 3%; width: 26%; }
+      .feat.r .chef, .chef.right { right: 3%; }
+      .hero .stage { margin-top: 30vw; }
+      .bubble { left: 31%; top: -27vw; rotate: 4deg; }
+      .bubble::after { left: 8%; bottom: -8px; width: 16px; height: 16px; transform: rotate(70deg) skew(10deg); }
+      .ribbon::before { left: -.55em; }
+      .ribbon::after { right: -.55em; }
+      .ribbon::before, .ribbon::after { width: 1.1em; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero::before, .chef, .track { animation: none; }
+      .marquee { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+<header class="band hero" style="--c:#ffa63a">
+  <div class="wrap">
+    <h1><img src="img/logo.webp" width="1100" height="404" alt="クックライド（COOK RIDE!）"></h1>
+    <p class="tagline"><span>みんなで作って届ける</span><wbr><span>協力料理アクション</span></p>
+    <ul class="chips">
+      <li>iPhone・iPad</li>
+      <li>基本無料</li>
+      <li>1〜4人</li>
+      <li>オンライン協力</li>
+    </ul>
+    <!-- 公開の後：class の soon と aria-disabled を外し、href に App Store のアプリのページの URL を入れ、「12月1日 公開」を「App Store で入手」に変える（下の案内の同じ欄も） -->
+    <a class="store soon" aria-disabled="true">
+      <img src="img/icon.png" width="256" height="256" alt="">
+      <span><small>App Store で配信します</small><b>12月1日 公開</b></span>
+    </a>
+    <div class="stage">
+      <p class="bubble" aria-hidden="true">ひとりでも<em>楽しいよ！</em></p>
+      <img class="chef" src="img/chef-cat.webp" width="478" height="760" alt="">
+      <img class="chef right" src="img/chef-dog.webp" width="484" height="760" alt="">
+      <div class="frame"><video controls playsinline preload="none" poster="img/poster.jpg" width="1280" height="590" aria-label="クックライドの紹介の動画（30秒、音が出ます）"><source src="media/preview.mp4" type="video/mp4"></video></div>
+    </div>
+  </div>
+</header>
+<main>
+
+<section class="band feat l" style="--c:#ffc43c">
+  <div class="wrap">
+    <div class="stage reveal">
+      <img class="chef" src="img/chef-cat.webp" width="478" height="760" alt="" loading="lazy">
+      <div class="frame"><img src="img/screen-coop-1600.webp" srcset="img/screen-coop-880.webp 880w, img/screen-coop-1600.webp 1600w" sizes="(min-width: 1100px) 840px, (min-width: 720px) 76vw, 92vw" width="1600" height="736" alt="4人の料理人が同じ厨房で料理を作っている画面" loading="lazy"></div>
+    </div>
+    <h2 class="ribbon"><span>友達と協力クッキング！</span></h2>
+    <p class="pill">1〜4人で、切って焼いて届けよう</p>
+    <p class="desc">部屋の番号を伝えるだけで、友達と同じ厨房へ。決まった合図のボタンで、ことばを使わずに助け合えます。</p>
+  </div>
+</section>
+<section class="band feat r" style="--c:#46bec8">
+  <div class="wrap">
+    <div class="stage reveal">
+      <img class="chef" src="img/chef-dog.webp" width="484" height="760" alt="" loading="lazy">
+      <div class="frame"><img src="img/screen-delivery-1600.webp" srcset="img/screen-delivery-880.webp 880w, img/screen-delivery-1600.webp 1600w" sizes="(min-width: 1100px) 840px, (min-width: 720px) 76vw, 92vw" width="1600" height="736" alt="バイクで街へ料理を届けている画面" loading="lazy"></div>
+    </div>
+    <h2 class="ribbon"><span>できたら、バイクで街へ！</span></h2>
+    <p class="pill">自分で届けても、配達代行にまかせても</p>
+    <p class="desc">できた料理は、お店の提供口で渡すか、バイクで街の家までお届け。どちらにするかは、あなた次第です。</p>
+  </div>
+</section>
+<section class="band feat l" style="--c:#78c85a">
+  <div class="wrap">
+    <div class="stage reveal">
+      <img class="chef" src="img/chef-panda.webp" width="493" height="760" alt="" loading="lazy">
+      <div class="frame"><img src="img/screen-solo-1600.webp" srcset="img/screen-solo-880.webp 880w, img/screen-solo-1600.webp 1600w" sizes="(min-width: 1100px) 840px, (min-width: 720px) 76vw, 92vw" width="1600" height="736" alt="ひとりで2人の料理人を切り替えて料理している画面" loading="lazy"></div>
+    </div>
+    <h2 class="ribbon"><span>ひとりでも、とことん遊べる！</span></h2>
+    <p class="pill">2人の料理人を切り替えて回す</p>
+    <p class="desc">ひとりの時は、2人の料理人を切り替えながら厨房を回します。自分のペースで、じっくり遊べます。</p>
+  </div>
+</section>
+<section class="band feat r" style="--c:#ff8c6e">
+  <div class="wrap">
+    <div class="stage reveal">
+      <img class="chef" src="img/chef-rabbit.webp" width="520" height="760" alt="" loading="lazy">
+      <div class="frame"><img src="img/screen-recipes-1600.webp" srcset="img/screen-recipes-880.webp 880w, img/screen-recipes-1600.webp 1600w" sizes="(min-width: 1100px) 840px, (min-width: 720px) 76vw, 92vw" width="1600" height="736" alt="料理図鑑に料理が並んでいる画面" loading="lazy"></div>
+    </div>
+    <h2 class="ribbon"><span>つくれる料理が、たくさん！</span></h2>
+    <p class="pill">和食も洋食も、いろいろ作れる</p>
+    <p class="desc">サラダ、オムレツ、焼きそば、お寿司……。切る、焼く、煮る、盛りつけるを組み合わせて、いろいろな料理を作れます。</p>
+  </div>
+</section>
+<section class="band feat l" style="--c:#5aaaf0">
+  <div class="wrap">
+    <div class="stage reveal">
+      <img class="chef" src="img/chef-capybara.webp" width="501" height="760" alt="" loading="lazy">
+      <div class="frame"><img src="img/screen-layout-1600.webp" srcset="img/screen-layout-880.webp 880w, img/screen-layout-1600.webp 1600w" sizes="(min-width: 1100px) 840px, (min-width: 720px) 76vw, 92vw" width="1600" height="736" alt="本店の厨房に設備を並べている画面" loading="lazy"></div>
+    </div>
+    <h2 class="ribbon"><span>自分だけの厨房を作ろう！</span></h2>
+    <p class="pill">設備をそろえて、好きに並べる</p>
+    <p class="desc">本店の厨房に、設備を好きに並べて営業。売り上げで設備をそろえて、店のランクを上げていきます。よくできた配置は、リンクで友達に見せられます。</p>
+  </div>
+</section>
+<section class="band feat r" style="--c:#aa82e6">
+  <div class="wrap">
+    <div class="stage reveal">
+      <img class="chef" src="img/chef-penguin.webp" width="505" height="760" alt="" loading="lazy">
+      <div class="frame"><img src="img/screen-stage-1600.webp" srcset="img/screen-stage-880.webp 880w, img/screen-stage-1600.webp 1600w" sizes="(min-width: 1100px) 840px, (min-width: 720px) 76vw, 92vw" width="1600" height="736" alt="出張営業のステージで料理している画面" loading="lazy"></div>
+    </div>
+    <h2 class="ribbon"><span>出張先は、毎回ちがう厨房！</span></h2>
+    <p class="pill">ステージごとに、形も仕掛けもちがう</p>
+    <p class="desc">出張営業では、ステージごとに厨房の形も仕掛けも変わります。ひとりでも、オンラインの協力でも遊べます。</p>
+  </div>
+</section>
+<section class="band lineup" style="--c:#ffaa50">
+  <div class="wrap">
+    <h2 class="ribbon"><span>どうぶつシェフが、いっぱい！</span></h2>
+    <p class="pill">お気に入りを見つけて、着がえも楽しもう</p>
+  </div>
+  <div class="marquee">
+    <ul class="track">
+        <li><img src="img/lineup-bear.webp" width="221" height="340" alt="" loading="lazy"><b>クマ</b></li>
+        <li><img src="img/lineup-capybara.webp" width="212" height="340" alt="" loading="lazy"><b>カピバラ</b></li>
+        <li><img src="img/lineup-cat.webp" width="223" height="340" alt="" loading="lazy"><b>ネコ</b></li>
+        <li><img src="img/lineup-dog.webp" width="216" height="340" alt="" loading="lazy"><b>イヌ</b></li>
+        <li><img src="img/lineup-fox.webp" width="216" height="340" alt="" loading="lazy"><b>キツネ</b></li>
+        <li><img src="img/lineup-rabbit.webp" width="235" height="340" alt="" loading="lazy"><b>ウサギ</b></li>
+        <li><img src="img/lineup-panda.webp" width="212" height="340" alt="" loading="lazy"><b>パンダ</b></li>
+        <li><img src="img/lineup-penguin.webp" width="221" height="340" alt="" loading="lazy"><b>ペンギン</b></li>
+        <li><img src="img/lineup-pig.webp" width="217" height="340" alt="" loading="lazy"><b>ブタ</b></li>
+        <li><img src="img/lineup-frog.webp" width="210" height="340" alt="" loading="lazy"><b>カエル</b></li>
+        <li><img src="img/lineup-owl.webp" width="224" height="340" alt="" loading="lazy"><b>フクロウ</b></li>
+        <li><img src="img/lineup-raccoon.webp" width="214" height="340" alt="" loading="lazy"><b>アライグマ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-bear.webp" width="221" height="340" alt="" loading="lazy"><b>クマ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-capybara.webp" width="212" height="340" alt="" loading="lazy"><b>カピバラ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-cat.webp" width="223" height="340" alt="" loading="lazy"><b>ネコ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-dog.webp" width="216" height="340" alt="" loading="lazy"><b>イヌ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-fox.webp" width="216" height="340" alt="" loading="lazy"><b>キツネ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-rabbit.webp" width="235" height="340" alt="" loading="lazy"><b>ウサギ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-panda.webp" width="212" height="340" alt="" loading="lazy"><b>パンダ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-penguin.webp" width="221" height="340" alt="" loading="lazy"><b>ペンギン</b></li>
+        <li aria-hidden="true"><img src="img/lineup-pig.webp" width="217" height="340" alt="" loading="lazy"><b>ブタ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-frog.webp" width="210" height="340" alt="" loading="lazy"><b>カエル</b></li>
+        <li aria-hidden="true"><img src="img/lineup-owl.webp" width="224" height="340" alt="" loading="lazy"><b>フクロウ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-raccoon.webp" width="214" height="340" alt="" loading="lazy"><b>アライグマ</b></li>
+    </ul>
+    <ul class="track rev">
+        <li><img src="img/lineup-octopus.webp" width="226" height="340" alt="" loading="lazy"><b>タコ</b></li>
+        <li><img src="img/lineup-lion.webp" width="223" height="340" alt="" loading="lazy"><b>ライオン</b></li>
+        <li><img src="img/lineup-elephant.webp" width="259" height="340" alt="" loading="lazy"><b>ゾウ</b></li>
+        <li><img src="img/lineup-axolotl.webp" width="259" height="340" alt="" loading="lazy"><b>ウーパールーパー</b></li>
+        <li><img src="img/lineup-hedgehog.webp" width="219" height="340" alt="" loading="lazy"><b>ハリネズミ</b></li>
+        <li><img src="img/lineup-crocodile.webp" width="213" height="340" alt="" loading="lazy"><b>ワニ</b></li>
+        <li><img src="img/lineup-peacock.webp" width="283" height="340" alt="" loading="lazy"><b>クジャク</b></li>
+        <li><img src="img/lineup-bee.webp" width="226" height="340" alt="" loading="lazy"><b>ミツバチ</b></li>
+        <li><img src="img/lineup-budgie.webp" width="218" height="340" alt="" loading="lazy"><b>インコ</b></li>
+        <li><img src="img/lineup-squirrel.webp" width="223" height="340" alt="" loading="lazy"><b>リス</b></li>
+        <li><img src="img/lineup-chicken.webp" width="215" height="340" alt="" loading="lazy"><b>ニワトリ</b></li>
+        <li><img src="img/lineup-flamingo.webp" width="223" height="340" alt="" loading="lazy"><b>フラミンゴ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-octopus.webp" width="226" height="340" alt="" loading="lazy"><b>タコ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-lion.webp" width="223" height="340" alt="" loading="lazy"><b>ライオン</b></li>
+        <li aria-hidden="true"><img src="img/lineup-elephant.webp" width="259" height="340" alt="" loading="lazy"><b>ゾウ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-axolotl.webp" width="259" height="340" alt="" loading="lazy"><b>ウーパールーパー</b></li>
+        <li aria-hidden="true"><img src="img/lineup-hedgehog.webp" width="219" height="340" alt="" loading="lazy"><b>ハリネズミ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-crocodile.webp" width="213" height="340" alt="" loading="lazy"><b>ワニ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-peacock.webp" width="283" height="340" alt="" loading="lazy"><b>クジャク</b></li>
+        <li aria-hidden="true"><img src="img/lineup-bee.webp" width="226" height="340" alt="" loading="lazy"><b>ミツバチ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-budgie.webp" width="218" height="340" alt="" loading="lazy"><b>インコ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-squirrel.webp" width="223" height="340" alt="" loading="lazy"><b>リス</b></li>
+        <li aria-hidden="true"><img src="img/lineup-chicken.webp" width="215" height="340" alt="" loading="lazy"><b>ニワトリ</b></li>
+        <li aria-hidden="true"><img src="img/lineup-flamingo.webp" width="223" height="340" alt="" loading="lazy"><b>フラミンゴ</b></li>
+    </ul>
+  </div>
+  <div class="wrap"><p class="desc">24体の動物の料理人が登場。ゲームの中のコインで、仲間を増やせます。</p></div>
+</section>
+<section class="band feat r" style="--c:#5078d7">
+  <div class="wrap">
+    <div class="stage reveal">
+      <img class="chef" src="img/chef-bear.webp" width="476" height="760" alt="" loading="lazy">
+      <div class="frame"><img src="img/screen-season-1600.webp" srcset="img/screen-season-880.webp 880w, img/screen-season-1600.webp 1600w" sizes="(min-width: 1100px) 840px, (min-width: 720px) 76vw, 92vw" width="1600" height="736" alt="シーズン営業の今月の課題が並んでいる画面" loading="lazy"></div>
+    </div>
+    <h2 class="ribbon"><span>毎月、新しい4つの課題！</span></h2>
+    <p class="pill">シーズンで腕だめし</p>
+    <p class="desc">月ごとの課題に、自分の店の設備と配置で挑戦。週ごとに新しい課題が開きます。</p>
+  </div>
+</section>
+<section class="band feat l" style="--c:#3cbe96">
+  <div class="wrap">
+    <div class="stage reveal">
+      <img class="chef" src="img/chef-fox.webp" width="501" height="760" alt="" loading="lazy">
+      <div class="frame"><img src="img/screen-ranking-1600.webp" srcset="img/screen-ranking-880.webp 880w, img/screen-ranking-1600.webp 1600w" sizes="(min-width: 1100px) 840px, (min-width: 720px) 76vw, 92vw" width="1600" height="736" alt="出張営業のランキングの画面" loading="lazy"></div>
+    </div>
+    <h2 class="ribbon"><span>ランキングで、みんなと競おう！</span></h2>
+    <p class="pill">1人でも、友達とでも。人数ごとの順位</p>
+    <p class="desc">出張営業の記録は、人数ごとのランキングに。全国のプレイヤーと腕くらべができます。</p>
+  </div>
+</section>
+</main>
+<section class="band cta" style="--c:#ffc43c">
+  <div class="wrap">
+    <img class="icon" src="img/icon.png" width="256" height="256" alt="クックライドのアイコン" loading="lazy">
+    <p class="tagline"><span>作って、乗って、</span><wbr><span>届けよう！</span></p>
+    <a class="store soon" aria-disabled="true">
+      <img src="img/icon.png" width="256" height="256" alt="">
+      <span><small>App Store で配信します</small><b>12月1日 公開</b></span>
+    </a>
+    <div class="trio" aria-hidden="true">
+      <img src="img/chef-panda.webp" width="493" height="760" alt="" loading="lazy">
+      <img src="img/chef-rabbit.webp" width="520" height="760" alt="" loading="lazy">
+      <img src="img/chef-penguin.webp" width="505" height="760" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+<footer>
+  <nav>
+    <a href="https://takutonkatsu.com/cookride/support/">サポート</a>
+    <a href="https://takutonkatsu.com/cookride/privacy/">プライバシーポリシー</a>
+    <a href="https://takutonkatsu.com/cookride/terms/">利用規約</a>
+    <a href="https://takutonkatsu.com/cookride/law/">特定商取引法に基づく表記</a>
+  </nav>
+  <p class="fine">遊ぶにはインターネットへの接続が必要です。広告が表示されます（アプリ内課金「広告なし」で、営業の後に自動で出る広告を消せます）。</p>
+  <p class="copy">© 2026 Takutonkatsu</p>
+</footer>
+</body>
+</html>
