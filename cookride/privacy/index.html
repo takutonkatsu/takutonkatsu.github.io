@@ -3,73 +3,127 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="no-referrer">
-  <meta name="theme-color" content="#ffb23f">
+  <meta name="theme-color" content="#46bec8">
+  <link rel="icon" href="../img/icon.png">
   <title>プライバシーポリシー｜クックライド（COOK RIDE!）</title>
   <style>
-    :root { color-scheme: light; --bg: #ffb23f; --card: #fff8ec; --ink: #2b1d14; --muted: #7a6656; --accent: #e8452c; --line: #ead9c3; }
+    @font-face { font-family: "CR Rounded"; font-weight: 900; font-display: swap; src: url(../font/pages-rounded-black.woff) format("woff"); }
+    @font-face { font-family: "CR Rounded"; font-weight: 500; font-display: swap; src: url(../font/pages-rounded-medium.woff) format("woff"); }
+    :root { color-scheme: light; --ink: #4a260c; --text: #2b1d14; --muted: #7a6656; --red: #e23535; --red-deep: #7a0f15; --red-tail: #a51c1f; --cream: #fff8ec; --line: #ead9c3; --c: #46bec8; }
     * { box-sizing: border-box; }
-    body { margin: 0; padding: max(20px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom)); background: var(--bg); color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif; line-height: 1.75; font-size: 16px; -webkit-text-size-adjust: 100%; }
-    main { width: min(720px, 100%); margin: 0 auto; padding: 28px 20px 24px; border-radius: 24px; background: var(--card); box-shadow: 0 8px 0 rgba(43, 29, 20, .18); }
-    h1 { font-size: 1.35rem; line-height: 1.4; margin: 0 0 .25rem; }
-    .app { color: var(--muted); font-size: .9rem; margin: 0 0 1.25rem; }
-    h2 { font-size: 1.05rem; margin: 1.75rem 0 .5rem; padding-left: .6rem; border-left: 5px solid var(--accent); }
-    p, li { margin: .35rem 0; }
-    ul { padding-left: 1.25rem; }
-    .table { overflow-x: auto; }
-    table { border-collapse: collapse; width: 100%; font-size: .92rem; }
-    th, td { border: 1px solid var(--line); padding: .5rem .6rem; text-align: left; vertical-align: top; }
-    th { background: #fbe9d1; }
-    a { color: #b5321d; word-break: break-all; }
-    .note { color: var(--muted); font-size: .9rem; }
-    footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .9rem; }
-    footer a { margin-right: 1rem; }
+    body { margin: 0; background: #2b1d14; color: var(--text); font-family: "CR Rounded", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif; font-weight: 500;
+      line-height: 1.85; font-size: 16px; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    .band { position: relative; overflow: hidden; padding: max(18px, env(safe-area-inset-top)) 14px clamp(40px, 7vw, 72px);
+      background: radial-gradient(120% 60% at 50% 12%, color-mix(in srgb, var(--c), #fff 30%), var(--c) 55%, color-mix(in srgb, var(--c), #3a1a00 12%)); }
+    .band::before { content: ""; position: absolute; left: 50%; top: 260px; width: 220vmax; height: 220vmax; margin: -110vmax 0 0 -110vmax; pointer-events: none;
+      background: repeating-conic-gradient(rgba(255, 255, 255, .17) 0 6deg, rgba(255, 255, 255, 0) 6deg 12deg);
+      -webkit-mask: radial-gradient(circle, #000 0, rgba(0, 0, 0, .5) 22%, transparent 46%); mask: radial-gradient(circle, #000 0, rgba(0, 0, 0, .5) 22%, transparent 46%); }
+    .head { position: relative; z-index: 1; width: min(760px, 100%); margin: 0 auto; text-align: center; }
+    .logo { display: block; width: min(230px, 50%); margin: 0 auto clamp(10px, 2.4vw, 18px); filter: drop-shadow(0 6px 6px rgba(40, 20, 0, .3)); }
+    h1 { position: relative; z-index: 4; display: inline-block; margin: 0; rotate: -2deg; font-weight: 900; font-size: clamp(1.15rem, 5.6vw, 2.2rem); line-height: 1.2; white-space: nowrap;
+      filter: drop-shadow(0 8px 7px rgba(40, 20, 0, .3)); }
+    h1 span { position: relative; z-index: 1; display: block; padding: .3em .85em .36em; color: #fff; -webkit-text-stroke: .17em var(--red-deep); paint-order: stroke fill;
+      background: linear-gradient(#f04444, #d42a2a); border-radius: 4px; outline: 2px solid rgba(255, 255, 255, .9); outline-offset: -.24em; }
+    h1::before, h1::after { content: ""; position: absolute; top: .34em; width: 1.2em; height: 100%; background: var(--red-tail); }
+    h1::before { left: -.6em; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, .5em 50%); }
+    h1::after { right: -.6em; clip-path: polygon(0 0, 100% 0, calc(100% - .5em) 50%, 100% 100%, 0 100%); }
+    .app { position: relative; z-index: 5; display: table; margin: -.3em auto 0; padding: .1em 1.1em .14em; border-radius: 999px; background: linear-gradient(#ffe36a, #ffc93a); border: 3px solid var(--ink);
+      font-weight: 900; font-size: clamp(.78rem, 3vw, 1rem); line-height: 1.5; color: #6e280a; box-shadow: 0 4px 0 rgba(74, 38, 12, .25); }
+    .sheet { position: relative; z-index: 1; width: min(760px, 100%); margin: clamp(64px, 13vw, 92px) auto 0; }
+    .chef { position: absolute; z-index: 0; right: 6%; top: clamp(-84px, -17vw, -62px); width: clamp(84px, 22vw, 124px); filter: drop-shadow(0 8px 8px rgba(40, 20, 0, .3)); }
+    main { position: relative; z-index: 1; padding: clamp(20px, 4.5vw, 34px) clamp(16px, 4vw, 32px) clamp(22px, 4.5vw, 34px); border-radius: 26px; background: var(--cream); border: 4px solid #fff;
+      box-shadow: 0 3px 0 rgba(74, 38, 12, .18), 0 20px 40px rgba(40, 20, 0, .3); }
+    main > :first-child { margin-top: 0; }
+    h2 { display: flex; align-items: center; gap: .5em; margin: 2rem 0 .6rem; padding: .28em .8em .3em; border-radius: 12px; background: #ffe9a8; border-bottom: 3px solid #f0c24a;
+      font-weight: 900; font-size: 1.08rem; line-height: 1.45; color: var(--ink); }
+    h2::before { content: ""; flex: none; width: .62em; height: .62em; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px #fff; }
+    p, li { margin: .4rem 0; }
+    ol, ul { padding-left: 1.4rem; }
+    li::marker { color: #b5321d; font-weight: 900; }
+    strong, dt, th, label { font-weight: 900; }
+    a { color: #b5321d; word-break: break-all; text-underline-offset: .2em; }
+    .table { overflow-x: auto; border-radius: 14px; border: 2px solid var(--line); background: #fff; }
+    table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+    th, td { border-bottom: 2px solid var(--line); padding: .55rem .7rem; text-align: left; vertical-align: top; }
+    th + td, td + td, th + th { border-left: 2px solid var(--line); }
+    tr:last-child > * { border-bottom: 0; }
+    th { background: #fbe9d1; color: var(--ink); }
+    
+    .note, .hint { color: var(--muted); font-size: .9rem; }
+    .bad { color: #b5321d; }
+    .id-box { margin: .75rem 0 1rem; padding: .9rem 1rem; border-radius: 18px; background: #fff; border: 3px dashed #f0c24a; }
+    .id-box label { display: block; font-size: .92rem; color: var(--ink); margin-bottom: .3rem; }
+    .id-box input { width: 100%; font-size: 1.4rem; letter-spacing: .2em; font-family: ui-monospace, Menlo, monospace; padding: .45rem .7rem;
+      border: 3px solid var(--ink); border-radius: 12px; background: var(--cream); color: var(--text); text-transform: uppercase; }
+    .mail { display: block; width: min(22em, 100%); text-align: center; margin: 1.2rem auto .7rem; padding: .7rem 1rem .75rem; border-radius: 999px; border: 3px solid var(--ink);
+      background: linear-gradient(#ffe36a, #ffc93a); color: var(--ink); font-weight: 900; font-size: 1.15rem; text-decoration: none; box-shadow: 0 6px 0 var(--ink); }
+    .mail:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--ink); }
+    .warn { margin-top: 1rem; padding: .75rem 1rem; border-radius: 14px; border: 3px solid #f0a23a; background: #fff1d6; font-size: .93rem; }
+    dl { margin: 0; }
+    dt { margin-top: 1rem; padding: .5rem .8rem; border-radius: 12px 12px 0 0; background: #fbe9d1; color: var(--ink); }
+    dd { margin: 0; padding: .55rem .8rem .65rem; border-radius: 0 0 12px 12px; background: #fff; border: 2px solid #fbe9d1; border-top: 0; }
+    footer { padding: 24px 16px max(24px, env(safe-area-inset-bottom)); background: #2b1d14; color: #f6e7d2; text-align: center; font-size: .86rem; line-height: 1.9; }
+    footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .2em 1.4em; font-size: .95rem; }
+    footer a { color: #ffd84a; word-break: normal; }
+    footer a[aria-current] { color: #f6e7d2; text-decoration: none; }
+    footer .copy { margin: 10px 0 0; opacity: .6; }
   </style>
 </head>
 <body>
+<div class="band">
+  <header class="head">
+    <a href="../"><img class="logo" src="../img/logo.webp" width="1100" height="404" alt="クックライド（COOK RIDE!）のホームページへ"></a>
+    <h1><span>プライバシーポリシー</span></h1>
+    <p class="app">クックライド（COOK RIDE!）</p>
+  </header>
+  <div class="sheet">
+    <img class="chef" src="../img/chef-penguin.webp" width="505" height="760" alt="">
 <main>
-  <h1>プライバシーポリシー</h1>
-  <p class="app">クックライド（COOK RIDE!）</p>
 
-  <p>制定日：2026年11月19日<br>改定日：2026年11月21日</p>
+  <p>制定日：2026年11月19日<br>改定日：2026年12月◯日<!-- 公開の版の前にサイトへ出す日に直す --></p>
 
-  <p>Takutonkatsu（以下「運営者」）は、スマートフォン向けゲーム「クックライド（COOK RIDE!）」（以下「本アプリ」）で取り扱う情報について、次のとおり定めます。</p>
+  <p>Takutonkatsu（以下「運営者」）は、スマートフォン向けゲーム「クックライド（COOK RIDE!）」（以下「本アプリ」）で取り扱う情報について、個人情報の保護に関する法律（以下「個人情報保護法」）などの法律に沿って、次のとおり定めます。</p>
 
   <h2>1. 運営者</h2>
   <ul>
-    <li>名前：Takutonkatsu</li>
+    <li>名前：Takutonkatsu（個人）。情報の取り扱いの責任者も、運営者です。</li>
     <li>連絡先：<a href="https://takutonkatsu.com/cookride/support/">サポートのページ</a>、またはメール <a href="mailto:takutonkatsu.dev@gmail.com">takutonkatsu.dev@gmail.com</a></li>
-    <li>住所：ご請求があれば、遅滞なくお知らせします。</li>
+    <li>住所と、代表者の氏名：ご請求があれば、遅滞なくお知らせします。</li>
   </ul>
 
   <h2>2. 取り扱う情報</h2>
   <ul>
     <li><strong>本アプリが自動で作るもの：</strong>匿名のアカウントの番号、プレイヤーID（英字と数字の6字）</li>
     <li><strong>あなたが入力するもの：</strong>表示名（ほかのプレイヤーに表示されます）</li>
-    <li><strong>遊ぶと記録されるもの：</strong>ゲームの進み、持ち物（コイン・キャラクター・衣装・バッジ）、ステージの結果と記録、本店の配置</li>
+    <li><strong>遊ぶと記録されるもの：</strong>ゲームの進み、持ち物（コイン・キャラクター・衣装・バッジ）、ステージの結果と記録、本店の配置、シーズン営業の記録（週ごとの課題の結果・★・順位）と課題ごとの配置、遊んだ日時などの利用の記録</li>
     <li><strong>通信のために扱うもの：</strong>IPアドレス（不正の防止のため、一部は元に戻せない形に変えて保存します）</li>
     <li><strong>購入した時：</strong>購入したかどうかの記録、Apple から届く購入の番号、返金されたかどうか。お支払いの情報（カードの番号など）は Apple が扱い、運営者は受け取りません。</li>
-    <li><strong>広告を表示する時：</strong>広告の識別子（トラッキングを許可した場合だけ）、端末の情報、広告を見た・押した記録（Google が扱います。5 を参照）。</li>
+    <li><strong>広告を表示する時：</strong>広告の識別子（トラッキングを許可した場合だけ）、端末の情報、IPアドレスから推し量ったおおよその場所（国や地域の程度）、広告を見た・押した記録、アプリの動作の記録（止まった時の記録や動作の速さなど）。これらは Google が扱います（5 を参照）。</li>
     <li><strong>報酬の広告を見た時：</strong>受け取りの受付（どの営業か・足すコイン。短い間だけ）、月ごとの「広告で受け取ったコイン」の合計、営業ごとの「2倍にした」の印（運営者のサーバーに、アカウントと結びつけて保存します）。</li>
-    <li><strong>お問い合わせの時：</strong>メールでいただいた内容、送り主のメールアドレス、プレイヤーID</li>
+    <li><strong>お問い合わせの時：</strong>メールでいただいた内容、送り主のメールアドレス、プレイヤーID、やり取りの記録</li>
   </ul>
   <p>本名、電話番号、住所、正確な位置、連絡先、写真は集めません。</p>
 
   <h2>3. 使い道</h2>
   <ul>
-    <li>本アプリを動かすため（ログイン、進みの保存、協力プレイ、ランキング）</li>
+    <li>本アプリを動かすため（ログイン、進みの保存、協力プレイ、ランキング、シーズン営業）</li>
     <li>機種変更の引き継ぎのため</li>
     <li>お問い合わせに答えるため</li>
-    <li>不正やルール違反を見つけ、止めるため</li>
-    <li>障害を調べ、安定して運用するため</li>
-    <li>広告を表示し、報酬の広告の受け取りを確かめるため</li>
+    <li>不正やルール違反を見つけ、止め、利用規約に沿った措置をとるため</li>
+    <li>トラブルを防ぎ、対応するため（お問い合わせのやり取りの記録を、法的な手続きや、警察などへの相談に使うことを含みます）</li>
+    <li>障害を調べ、安定して運用し、本アプリをよりよくするため</li>
+    <li>広告を表示し、その効果を測り、報酬の広告の受け取りを確かめるため</li>
     <li>アプリ内の購入を確かめ、「広告なし」を復元するため</li>
+    <li>本アプリのお知らせや、利用規約・このポリシーの変更をお伝えするため</li>
+    <li>個人を見分けられない形の統計を作るため（8 を参照）</li>
   </ul>
+  <p>使い道を変える時は、変える前の使い道と、関連があると合理的に認められる範囲で変え、このページでお知らせします。</p>
 
   <h2>4. ほかのプレイヤーに見える情報</h2>
-  <p>表示名、キャラクターと衣装、バッジ、ランキングの記録、協力プレイのチームの記録、おすすめに選ばれた本店の配置。お持ちのコインの数は表示しません。</p>
+  <p>表示名、キャラクターと衣装、バッジ、ランキングとシーズン営業の順位表の記録、協力プレイのチームの記録、おすすめに選ばれた本店の配置。協力プレイの部屋の中では、同じ部屋の人に、表示名・キャラクターと衣装・店のランクが見え、名札を押すとプレイヤーIDも見えます。お持ちのコインの数は表示しません。</p>
 
   <h2>5. 外部へ送る情報（電気通信事業法に基づく公表）</h2>
   <div class="table">
@@ -79,48 +133,95 @@
     <tr><td>The Constant Company, LLC（Vultr、協力プレイのサーバー）</td><td>協力プレイ中の操作、IPアドレス</td><td>協力プレイのため</td></tr>
     <tr><td>Google LLC（Gmail）</td><td>お問い合わせのメール</td><td>お問い合わせを受け、答えるため</td></tr>
     <tr><td>GitHub, Inc.（このページとサポートのページを置いている所）</td><td>ページを開いた時の通信の記録（IPアドレス、開いたページのアドレスなど）</td><td>ページを届けるため</td></tr>
-    <tr><td>Google LLC（AdMob、広告）</td><td>広告の識別子（許可した場合だけ）、IPアドレス、端末の情報、広告を見た・押した記録、本アプリの利用の記録</td><td>広告の表示・効果の測定・不正の防止</td></tr>
+    <tr><td>Google LLC（AdMob、広告）</td><td>広告の識別子（許可した場合だけ）、IPアドレス、おおよその場所、端末の情報、広告を見た・押した記録、本アプリの利用と動作の記録</td><td>広告の表示・効果の測定・分析・不正の防止</td></tr>
     <tr><td>Apple Inc.（アプリ内の購入）</td><td>購入の情報</td><td>アプリ内の購入のため</td></tr>
   </table>
   </div>
   <p>Google の情報の扱いは <a href="https://policies.google.com/technologies/partner-sites">https://policies.google.com/technologies/partner-sites</a> をご覧ください。</p>
   <p>Google には、あなたのプレイヤーIDやアカウントの番号は送りません。</p>
   <p>広告に使う識別子は、iPhone の「設定」→「プライバシーとセキュリティ」→「トラッキング」で、いつでも止められます。止めても、遊べる内容は変わりません。</p>
+  <p>上の会社には、本アプリを動かすための仕事を任せる形で情報を送っています。運営者は、任せた先が情報を適切に扱うよう、必要で適切な監督をします。</p>
 
-  <h2>6. 外国にある会社への提供</h2>
-  <p>上の会社は、アメリカにある会社です。各社は、それぞれの国の法律と各社の方針で情報を守っています。本アプリのデータベースと協力プレイのサーバーは、日本（東京）に置いています。</p>
-
-  <h2>7. 保存する期間</h2>
+  <h2>6. 外国にある会社への提供（個人情報保護法第28条）</h2>
   <ul>
-    <li>アカウントと遊んだ記録：アカウントの削除を受け付けてから30日以内に消します。ただし、協力プレイのチームの記録は、あなたの名前を伏せた形で残ります。</li>
-    <li>お問い合わせ・引き継ぎの記録：1年</li>
+    <li>5 の会社は、アメリカ合衆国にある会社です。本アプリのデータベースと協力プレイのサーバーは、日本（東京）に置いています。</li>
+    <li>アメリカ合衆国の個人情報の保護の制度は、個人情報保護委員会のウェブサイトにある「外国における個人情報の保護に関する制度等の調査」で調べることができます。</li>
+    <li>各社は、利用の契約や各社の方針で、個人情報保護法が求める措置に相当する措置をとっています。運営者は、各社がその措置を続けているかを、各社が出している資料で定期的に確かめます。</li>
+    <li>各社がとっている措置と、運営者が確かめた事は、ご請求があればお知らせします（16 の窓口へ）。</li>
+  </ul>
+
+  <h2>7. 第三者への提供</h2>
+  <p>運営者は、次の場合を除き、あなたの同意なしに、個人情報をほかの人や会社へ渡しません。</p>
+  <ul>
+    <li>法律に基づく場合（裁判所・警察・弁護士会などから、法律に基づいて照会や命令を受けた時を含みます）</li>
+    <li>人の命・体・財産を守るために必要で、あなたの同意を得るのが難しい時</li>
+    <li>国の機関や地方公共団体の事務に協力する必要があり、同意を得るとその事務に差し支える時</li>
+    <li>5 のように、使い道の範囲で仕事を任せる時</li>
+    <li>本アプリの事業を人に譲る時（利用規約の第21条）</li>
+  </ul>
+
+  <h2>8. 統計</h2>
+  <p>運営者は、遊び方の傾向などを、個人を見分けられない形の統計にして、本アプリの改善やお知らせ・宣伝に使うことがあります。統計は、誰の情報か分からない形で、ほかの人に示すことがあります。</p>
+
+  <h2>9. 保存する期間</h2>
+  <ul>
+    <li>アカウントと遊んだ記録：アカウントの削除を受け付けてから30日以内に消します。ただし、協力プレイのチームの記録と、終わったシーズン営業の順位表の記録（順位と点数）は、あなたの名前を伏せた形（「削除されたプレイヤー」）で残ります。</li>
+    <li>最後に使った日から3年以上使われていないアカウント：前もってお知らせしたうえで、削除することがあります（利用規約の第4条）。</li>
+    <li>お問い合わせ・引き継ぎの記録：1年。ただし、トラブルや法的な手続きに関わるやり取りは、それが終わるまで残します。</li>
     <li>不正の疑いの印：90日</li>
     <li>報酬の広告の受け取りの受付：発行から30分で切れ、その後に消します。</li>
     <li>広告で受け取ったコインの月ごとの合計と、営業ごとの「2倍にした」の印：ほかのコインの記録と同じ期間です（アカウントの削除で消します）。</li>
     <li>Google から届く「広告を見終わった」の知らせ（プレイヤーIDは含みません）：90日</li>
     <li>購入の記録（取引の番号・購入日・返金の日）：アカウントを削除するまで。ただし、返金された取引の番号と日付だけは、返金された物が復元で戻らないように、プレイヤーと結びつかない形で削除の後も残します。</li>
+    <li>法律で残すことが求められる情報は、その期間残します。</li>
   </ul>
 
-  <h2>8. アカウントの削除</h2>
-  <p>本アプリの「設定」→「その他」→「アカウントを削除」から、いつでも削除できます。受け付けてから30日以内に、2 の情報を消します。消した後は元に戻せません。</p>
+  <h2>10. アカウントの削除</h2>
+  <p>本アプリの「設定」→「その他」→「アカウントを削除」から、いつでも削除できます。受け付けてから30日以内に、2 の情報を消します（9 の、名前を伏せて残る物と、削除の後も残す物を除きます）。消した後は元に戻せません。</p>
 
-  <h2>9. 開示・訂正・削除などのご請求</h2>
-  <p>ご本人の情報の開示・訂正・利用の停止などは、<a href="https://takutonkatsu.com/cookride/support/">サポートのページ</a>から、プレイヤーIDを添えてご連絡ください。ご本人であることを確かめたうえで対応します。</p>
+  <h2>11. 開示・訂正・削除などのご請求</h2>
+  <ul>
+    <li><strong>できるご請求：</strong>個人情報保護法に基づく、使い道のお知らせ、開示（第三者へ渡した記録の開示を含みます）、訂正・追加・削除、利用の停止・消去、第三者への提供の停止</li>
+    <li><strong>頼み方：</strong><a href="https://takutonkatsu.com/cookride/support/">サポートのページ</a>のメールで、プレイヤーIDと、ご請求の内容を書いて送ってください。</li>
+    <li><strong>本人かどうかの確かめ：</strong>本アプリは匿名で遊べるため、プレイヤーIDに加えて、本アプリの画面で分かること（表示名、最近の記録など）をお聞きして、ご本人かを確かめます。確かめられない時は、ご請求に応じられないことがあります。</li>
+    <li><strong>代理の方：</strong>未成年の方の保護者（法定代理人）や、ご本人から頼まれた方もご請求できます。その時は、代理の権限を確かめる書類をお願いすることがあります。</li>
+    <li><strong>手数料：</strong>いただきません。</li>
+    <li><strong>お答えの方法：</strong>メールでお答えします。</li>
+    <li>法律で認められる理由（ほかの人の権利を害するおそれ、業務に大きな支障が出るおそれなど）がある時は、ご請求の全部または一部に応じないことがあります。その時は、理由をお知らせします。</li>
+  </ul>
 
-  <h2>10. 安全のための取り組み</h2>
-  <p>通信の暗号化、データベースの権限の制限、引き継ぎコードを元に戻せない形で保存する、などを行っています。</p>
+  <h2>12. 安全のための取り組み</h2>
+  <ul>
+    <li><strong>決まりと責任：</strong>情報の取り扱いの責任者を運営者とし、取り扱いの決まりを定めています。</li>
+    <li><strong>人：</strong>情報を扱うのは運営者だけです。仕事を任せる時は、秘密を守る約束をします。</li>
+    <li><strong>物：</strong>情報を扱う端末は、ロックをかけ、なくさないよう管理しています。</li>
+    <li><strong>技術：</strong>通信の暗号化、データベースの権限の制限、引き継ぎコードを元に戻せない形で保存する、管理の画面に入れる人を限る、などを行っています。</li>
+    <li><strong>外国の制度：</strong>6 のとおり、外国の会社の国の制度を知ったうえで、安全のための措置をとっています。</li>
+  </ul>
 
-  <h2>11. 子どもの利用</h2>
-  <p>本アプリは子ども向けに作られたものではありません。13歳未満の方は、保護者の方の同意を得てご利用ください。</p>
+  <h2>13. 情報が漏れた時</h2>
+  <p>個人情報が漏れた、またはそのおそれがある時は、すぐに広がるのを止め、原因を調べます。個人情報保護法で求められる時は、個人情報保護委員会へ報告し、あなたにお知らせします。一人一人にお知らせするのが難しい時は、本アプリのお知らせやこのページでお知らせします。</p>
 
-  <h2>12. 変更</h2>
-  <p>このポリシーを変えた時は、このページと本アプリのお知らせでお知らせします。</p>
+  <h2>14. 子どもの利用</h2>
+  <p>本アプリは子ども向けに作られたものではありません。16歳未満の方は、保護者の方の同意を得てご利用ください。保護者の方は、11 の窓口で、お子さんの情報についてご請求ができます。</p>
 
-  <footer>
-    <a href="https://takutonkatsu.com/cookride/terms/">利用規約</a>
-    <a href="https://takutonkatsu.com/cookride/support/">サポート</a>
-    <a href="https://takutonkatsu.com/cookride/law/">特定商取引法に基づく表記</a>
-  </footer>
+  <h2>15. 変更</h2>
+  <p>このポリシーは、法律の変更や本アプリの変更に合わせて変えることがあります。変えた時は、このページと本アプリのお知らせでお知らせします。大事な変更は、効き目が始まる前にお知らせします。法律で同意が必要な変更は、同意をいただきます。</p>
+
+  <h2>16. お問い合わせの窓口</h2>
+  <p><a href="https://takutonkatsu.com/cookride/support/">サポートのページ</a>、またはメール <a href="mailto:takutonkatsu.dev@gmail.com">takutonkatsu.dev@gmail.com</a>（メールだけで受け付けています）</p>
 </main>
+  </div>
+</div>
+<footer>
+  <nav>
+    <a href="../">ホームページ</a>
+    <a href="../support/">サポート</a>
+    <a href="../privacy/" aria-current="page">プライバシーポリシー</a>
+    <a href="../terms/">利用規約</a>
+    <a href="../law/">特定商取引法に基づく表記</a>
+  </nav>
+  <p class="copy">© 2026 Takutonkatsu</p>
+</footer>
 </body>
 </html>

@@ -3,42 +3,85 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-Ye758UShKSQ7K7ytbJzURgElcYkWQNXR4120bEdm0zE='; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; font-src 'self'; script-src 'sha256-Ye758UShKSQ7K7ytbJzURgElcYkWQNXR4120bEdm0zE='; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="no-referrer">
-  <meta name="theme-color" content="#ffb23f">
+  <meta name="theme-color" content="#ffc43c">
+  <link rel="icon" href="../img/icon.png">
   <title>サポート｜クックライド（COOK RIDE!）</title>
   <style>
-    :root { color-scheme: light; --bg: #ffb23f; --card: #fff8ec; --ink: #2b1d14; --muted: #7a6656; --accent: #e8452c; --line: #ead9c3; }
+    @font-face { font-family: "CR Rounded"; font-weight: 900; font-display: swap; src: url(../font/pages-rounded-black.woff) format("woff"); }
+    @font-face { font-family: "CR Rounded"; font-weight: 500; font-display: swap; src: url(../font/pages-rounded-medium.woff) format("woff"); }
+    :root { color-scheme: light; --ink: #4a260c; --text: #2b1d14; --muted: #7a6656; --red: #e23535; --red-deep: #7a0f15; --red-tail: #a51c1f; --cream: #fff8ec; --line: #ead9c3; --c: #ffc43c; }
     * { box-sizing: border-box; }
-    body { margin: 0; padding: max(20px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom)); background: var(--bg); color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif; line-height: 1.75; font-size: 16px; -webkit-text-size-adjust: 100%; }
-    main { width: min(720px, 100%); margin: 0 auto; padding: 28px 20px 24px; border-radius: 24px; background: var(--card); box-shadow: 0 8px 0 rgba(43, 29, 20, .18); }
-    h1 { font-size: 1.35rem; line-height: 1.4; margin: 0 0 .25rem; }
-    .app { color: var(--muted); font-size: .9rem; margin: 0 0 1.25rem; }
-    h2 { font-size: 1.05rem; margin: 1.75rem 0 .5rem; padding-left: .6rem; border-left: 5px solid var(--accent); }
-    p, li { margin: .35rem 0; }
-    ul { padding-left: 1.25rem; }
-    a { color: #b5321d; word-break: break-all; }
-    .id-box { margin: .75rem 0 1rem; padding: .9rem 1rem; border-radius: 16px; background: #fbe9d1; }
-    .id-box label { display: block; font-size: .9rem; color: var(--muted); margin-bottom: .3rem; }
-    .id-box input { width: 100%; font-size: 1.4rem; letter-spacing: .2em; font-family: ui-monospace, Menlo, monospace; padding: .45rem .7rem;
-      border: 2px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink); text-transform: uppercase; }
-    .hint { font-size: .88rem; color: var(--muted); }
+    body { margin: 0; background: #2b1d14; color: var(--text); font-family: "CR Rounded", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif; font-weight: 500;
+      line-height: 1.85; font-size: 16px; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    .band { position: relative; overflow: hidden; padding: max(18px, env(safe-area-inset-top)) 14px clamp(40px, 7vw, 72px);
+      background: radial-gradient(120% 60% at 50% 12%, color-mix(in srgb, var(--c), #fff 30%), var(--c) 55%, color-mix(in srgb, var(--c), #3a1a00 12%)); }
+    .band::before { content: ""; position: absolute; left: 50%; top: 260px; width: 220vmax; height: 220vmax; margin: -110vmax 0 0 -110vmax; pointer-events: none;
+      background: repeating-conic-gradient(rgba(255, 255, 255, .17) 0 6deg, rgba(255, 255, 255, 0) 6deg 12deg);
+      -webkit-mask: radial-gradient(circle, #000 0, rgba(0, 0, 0, .5) 22%, transparent 46%); mask: radial-gradient(circle, #000 0, rgba(0, 0, 0, .5) 22%, transparent 46%); }
+    .head { position: relative; z-index: 1; width: min(760px, 100%); margin: 0 auto; text-align: center; }
+    .logo { display: block; width: min(230px, 50%); margin: 0 auto clamp(10px, 2.4vw, 18px); filter: drop-shadow(0 6px 6px rgba(40, 20, 0, .3)); }
+    h1 { position: relative; z-index: 4; display: inline-block; margin: 0; rotate: -2deg; font-weight: 900; font-size: clamp(1.15rem, 5.6vw, 2.2rem); line-height: 1.2; white-space: nowrap;
+      filter: drop-shadow(0 8px 7px rgba(40, 20, 0, .3)); }
+    h1 span { position: relative; z-index: 1; display: block; padding: .3em .85em .36em; color: #fff; -webkit-text-stroke: .17em var(--red-deep); paint-order: stroke fill;
+      background: linear-gradient(#f04444, #d42a2a); border-radius: 4px; outline: 2px solid rgba(255, 255, 255, .9); outline-offset: -.24em; }
+    h1::before, h1::after { content: ""; position: absolute; top: .34em; width: 1.2em; height: 100%; background: var(--red-tail); }
+    h1::before { left: -.6em; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, .5em 50%); }
+    h1::after { right: -.6em; clip-path: polygon(0 0, 100% 0, calc(100% - .5em) 50%, 100% 100%, 0 100%); }
+    .app { position: relative; z-index: 5; display: table; margin: -.3em auto 0; padding: .1em 1.1em .14em; border-radius: 999px; background: linear-gradient(#ffe36a, #ffc93a); border: 3px solid var(--ink);
+      font-weight: 900; font-size: clamp(.78rem, 3vw, 1rem); line-height: 1.5; color: #6e280a; box-shadow: 0 4px 0 rgba(74, 38, 12, .25); }
+    .sheet { position: relative; z-index: 1; width: min(760px, 100%); margin: clamp(64px, 13vw, 92px) auto 0; }
+    .chef { position: absolute; z-index: 0; right: 6%; top: clamp(-84px, -17vw, -62px); width: clamp(84px, 22vw, 124px); filter: drop-shadow(0 8px 8px rgba(40, 20, 0, .3)); }
+    main { position: relative; z-index: 1; padding: clamp(20px, 4.5vw, 34px) clamp(16px, 4vw, 32px) clamp(22px, 4.5vw, 34px); border-radius: 26px; background: var(--cream); border: 4px solid #fff;
+      box-shadow: 0 3px 0 rgba(74, 38, 12, .18), 0 20px 40px rgba(40, 20, 0, .3); }
+    main > :first-child { margin-top: 0; }
+    h2 { display: flex; align-items: center; gap: .5em; margin: 2rem 0 .6rem; padding: .28em .8em .3em; border-radius: 12px; background: #ffe9a8; border-bottom: 3px solid #f0c24a;
+      font-weight: 900; font-size: 1.08rem; line-height: 1.45; color: var(--ink); }
+    h2::before { content: ""; flex: none; width: .62em; height: .62em; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px #fff; }
+    p, li { margin: .4rem 0; }
+    ol, ul { padding-left: 1.4rem; }
+    li::marker { color: #b5321d; font-weight: 900; }
+    strong, dt, th, label { font-weight: 900; }
+    a { color: #b5321d; word-break: break-all; text-underline-offset: .2em; }
+    .table { overflow-x: auto; border-radius: 14px; border: 2px solid var(--line); background: #fff; }
+    table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+    th, td { border-bottom: 2px solid var(--line); padding: .55rem .7rem; text-align: left; vertical-align: top; }
+    th + td, td + td, th + th { border-left: 2px solid var(--line); }
+    tr:last-child > * { border-bottom: 0; }
+    th { background: #fbe9d1; color: var(--ink); }
+    
+    .note, .hint { color: var(--muted); font-size: .9rem; }
     .bad { color: #b5321d; }
-    .mail { display: block; text-align: center; margin: 1rem 0 .5rem; padding: .95rem 1rem; border-radius: 999px; background: var(--accent); color: #fff;
-      font-weight: 700; font-size: 1.05rem; text-decoration: none; box-shadow: 0 5px 0 #a8301c; }
-    .mail:active { transform: translateY(3px); box-shadow: 0 2px 0 #a8301c; }
-    .warn { margin-top: 1rem; padding: .7rem .9rem; border-left: 5px solid #c98b2b; background: #fff1d6; font-size: .92rem; }
-    dt { font-weight: 700; margin-top: 1rem; }
-    dd { margin: .2rem 0 0 0; }
-    footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .9rem; }
-    footer a { margin-right: 1rem; }
+    .id-box { margin: .75rem 0 1rem; padding: .9rem 1rem; border-radius: 18px; background: #fff; border: 3px dashed #f0c24a; }
+    .id-box label { display: block; font-size: .92rem; color: var(--ink); margin-bottom: .3rem; }
+    .id-box input { width: 100%; font-size: 1.4rem; letter-spacing: .2em; font-family: ui-monospace, Menlo, monospace; padding: .45rem .7rem;
+      border: 3px solid var(--ink); border-radius: 12px; background: var(--cream); color: var(--text); text-transform: uppercase; }
+    .mail { display: block; width: min(22em, 100%); text-align: center; margin: 1.2rem auto .7rem; padding: .7rem 1rem .75rem; border-radius: 999px; border: 3px solid var(--ink);
+      background: linear-gradient(#ffe36a, #ffc93a); color: var(--ink); font-weight: 900; font-size: 1.15rem; text-decoration: none; box-shadow: 0 6px 0 var(--ink); }
+    .mail:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--ink); }
+    .warn { margin-top: 1rem; padding: .75rem 1rem; border-radius: 14px; border: 3px solid #f0a23a; background: #fff1d6; font-size: .93rem; }
+    dl { margin: 0; }
+    dt { margin-top: 1rem; padding: .5rem .8rem; border-radius: 12px 12px 0 0; background: #fbe9d1; color: var(--ink); }
+    dd { margin: 0; padding: .55rem .8rem .65rem; border-radius: 0 0 12px 12px; background: #fff; border: 2px solid #fbe9d1; border-top: 0; }
+    footer { padding: 24px 16px max(24px, env(safe-area-inset-bottom)); background: #2b1d14; color: #f6e7d2; text-align: center; font-size: .86rem; line-height: 1.9; }
+    footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .2em 1.4em; font-size: .95rem; }
+    footer a { color: #ffd84a; word-break: normal; }
+    footer a[aria-current] { color: #f6e7d2; text-decoration: none; }
+    footer .copy { margin: 10px 0 0; opacity: .6; }
   </style>
 </head>
 <body>
+<div class="band">
+  <header class="head">
+    <a href="../"><img class="logo" src="../img/logo.webp" width="1100" height="404" alt="クックライド（COOK RIDE!）のホームページへ"></a>
+    <h1><span>サポート</span></h1>
+    <p class="app">クックライド（COOK RIDE!）</p>
+  </header>
+  <div class="sheet">
+    <img class="chef" src="../img/chef-cat.webp" width="478" height="760" alt="">
 <main>
-  <h1>サポート</h1>
-  <p class="app">クックライド（COOK RIDE!）</p>
 
   <h2>お問い合わせ</h2>
   <div class="id-box">
@@ -50,6 +93,7 @@
   <a id="mail" class="mail" href="mailto:takutonkatsu.dev@gmail.com">メールで問い合わせる</a>
   <p class="hint">押すと、件名と本文にプレイヤーIDが入ったメールが開きます。メールが開かない時は、<a href="mailto:takutonkatsu.dev@gmail.com">takutonkatsu.dev@gmail.com</a> へ、プレイヤーIDを書いて送ってください。</p>
 
+  <p class="hint">お問い合わせは、メールだけで受け付けています（電話では受け付けていません）。お返事にお時間をいただくことや、内容によってはお答えできないことがあります（<a href="https://takutonkatsu.com/cookride/terms/">利用規約</a>の第13条）。</p>
   <p>次を書いてください。</p>
   <ul>
     <li>何が起きたか、いつ起きたか</li>
@@ -66,9 +110,13 @@
     <dt>Q. 遊べない・つながらない</dt>
     <dd>遊ぶにはインターネットが必要です。電波のよい所で、もう一度開いてください。続く時は、上のメールでお知らせください。</dd>
     <dt>Q. アカウントを消したい</dt>
-    <dd>「設定」→「その他」→「アカウントを削除」。受け付けてから30日以内に、すべての記録が消えます。</dd>
+    <dd>「設定」→「その他」→「アカウントを削除」。受け付けてから30日以内に、記録が消えます。協力プレイのチームと、終わったシーズン営業の順位表には、名前を伏せた形で残ります。</dd>
     <dt>Q. 不適切な名前のプレイヤーがいる</dt>
     <dd>上のメールで、相手の名前・見た所（ランキングなど）・日時を知らせてください。運営者が確かめて、名前を変えます。</dd>
+    <dt>Q. 友達と協力して遊びたい</dt>
+    <dd>「みんなで出張営業」で部屋を作り、出た部屋の番号を友達に伝えてください。友達は同じ画面で番号を入れると、同じ部屋に入れます。協力プレイの部屋にいる間は、広告は出ません。</dd>
+    <dt>Q. シーズン営業はいつから？</dt>
+    <dd>2027年1月から始まる予定です。毎月の課題に、自分の店の設備と配置で挑戦できます。始まる時は、アプリのお知らせでお伝えします。</dd>
     <dt>Q. ガチャはお金で引けますか</dt>
     <dd>いいえ。ガチャはゲームの中のコインだけで引けます。コインは販売していません。</dd>
     <dt>Q. 「広告なし」を買ったのに、新しい端末で広告が出る</dt>
@@ -78,13 +126,19 @@
     <dt>Q. 報酬の広告を見たのに、コインが増えない</dt>
     <dd>通信が切れると、受け取りが少し遅れることがあります。結果の画面に戻って待つか、ホームに戻ってもう一度開いてください。続く時は、上のメールでプレイヤーIDと日時をお知らせください。</dd>
   </dl>
-
-  <footer>
-    <a href="https://takutonkatsu.com/cookride/terms/">利用規約</a>
-    <a href="https://takutonkatsu.com/cookride/privacy/">プライバシーポリシー</a>
-    <a href="https://takutonkatsu.com/cookride/law/">特定商取引法に基づく表記</a>
-  </footer>
 </main>
+  </div>
+</div>
+<footer>
+  <nav>
+    <a href="../">ホームページ</a>
+    <a href="../support/" aria-current="page">サポート</a>
+    <a href="../privacy/">プライバシーポリシー</a>
+    <a href="../terms/">利用規約</a>
+    <a href="../law/">特定商取引法に基づく表記</a>
+  </nav>
+  <p class="copy">© 2026 Takutonkatsu</p>
+</footer>
 <script>
 (function () {
   var MAIL = "takutonkatsu.dev@gmail.com";

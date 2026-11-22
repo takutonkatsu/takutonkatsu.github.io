@@ -3,101 +3,334 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="no-referrer">
-  <meta name="theme-color" content="#ffb23f">
+  <meta name="theme-color" content="#5aaaf0">
+  <link rel="icon" href="../img/icon.png">
   <title>利用規約｜クックライド（COOK RIDE!）</title>
   <style>
-    :root { color-scheme: light; --bg: #ffb23f; --card: #fff8ec; --ink: #2b1d14; --muted: #7a6656; --accent: #e8452c; --line: #ead9c3; }
+    @font-face { font-family: "CR Rounded"; font-weight: 900; font-display: swap; src: url(../font/pages-rounded-black.woff) format("woff"); }
+    @font-face { font-family: "CR Rounded"; font-weight: 500; font-display: swap; src: url(../font/pages-rounded-medium.woff) format("woff"); }
+    :root { color-scheme: light; --ink: #4a260c; --text: #2b1d14; --muted: #7a6656; --red: #e23535; --red-deep: #7a0f15; --red-tail: #a51c1f; --cream: #fff8ec; --line: #ead9c3; --c: #5aaaf0; }
     * { box-sizing: border-box; }
-    body { margin: 0; padding: max(20px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom)); background: var(--bg); color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif; line-height: 1.75; font-size: 16px; -webkit-text-size-adjust: 100%; }
-    main { width: min(720px, 100%); margin: 0 auto; padding: 28px 20px 24px; border-radius: 24px; background: var(--card); box-shadow: 0 8px 0 rgba(43, 29, 20, .18); }
-    h1 { font-size: 1.35rem; line-height: 1.4; margin: 0 0 .25rem; }
-    .app { color: var(--muted); font-size: .9rem; margin: 0 0 1.25rem; }
-    h2 { font-size: 1.05rem; margin: 1.75rem 0 .5rem; padding-left: .6rem; border-left: 5px solid var(--accent); }
-    p, li { margin: .35rem 0; }
+    body { margin: 0; background: #2b1d14; color: var(--text); font-family: "CR Rounded", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif; font-weight: 500;
+      line-height: 1.85; font-size: 16px; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    .band { position: relative; overflow: hidden; padding: max(18px, env(safe-area-inset-top)) 14px clamp(40px, 7vw, 72px);
+      background: radial-gradient(120% 60% at 50% 12%, color-mix(in srgb, var(--c), #fff 30%), var(--c) 55%, color-mix(in srgb, var(--c), #3a1a00 12%)); }
+    .band::before { content: ""; position: absolute; left: 50%; top: 260px; width: 220vmax; height: 220vmax; margin: -110vmax 0 0 -110vmax; pointer-events: none;
+      background: repeating-conic-gradient(rgba(255, 255, 255, .17) 0 6deg, rgba(255, 255, 255, 0) 6deg 12deg);
+      -webkit-mask: radial-gradient(circle, #000 0, rgba(0, 0, 0, .5) 22%, transparent 46%); mask: radial-gradient(circle, #000 0, rgba(0, 0, 0, .5) 22%, transparent 46%); }
+    .head { position: relative; z-index: 1; width: min(760px, 100%); margin: 0 auto; text-align: center; }
+    .logo { display: block; width: min(230px, 50%); margin: 0 auto clamp(10px, 2.4vw, 18px); filter: drop-shadow(0 6px 6px rgba(40, 20, 0, .3)); }
+    h1 { position: relative; z-index: 4; display: inline-block; margin: 0; rotate: -2deg; font-weight: 900; font-size: clamp(1.15rem, 5.6vw, 2.2rem); line-height: 1.2; white-space: nowrap;
+      filter: drop-shadow(0 8px 7px rgba(40, 20, 0, .3)); }
+    h1 span { position: relative; z-index: 1; display: block; padding: .3em .85em .36em; color: #fff; -webkit-text-stroke: .17em var(--red-deep); paint-order: stroke fill;
+      background: linear-gradient(#f04444, #d42a2a); border-radius: 4px; outline: 2px solid rgba(255, 255, 255, .9); outline-offset: -.24em; }
+    h1::before, h1::after { content: ""; position: absolute; top: .34em; width: 1.2em; height: 100%; background: var(--red-tail); }
+    h1::before { left: -.6em; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, .5em 50%); }
+    h1::after { right: -.6em; clip-path: polygon(0 0, 100% 0, calc(100% - .5em) 50%, 100% 100%, 0 100%); }
+    .app { position: relative; z-index: 5; display: table; margin: -.3em auto 0; padding: .1em 1.1em .14em; border-radius: 999px; background: linear-gradient(#ffe36a, #ffc93a); border: 3px solid var(--ink);
+      font-weight: 900; font-size: clamp(.78rem, 3vw, 1rem); line-height: 1.5; color: #6e280a; box-shadow: 0 4px 0 rgba(74, 38, 12, .25); }
+    .sheet { position: relative; z-index: 1; width: min(760px, 100%); margin: clamp(64px, 13vw, 92px) auto 0; }
+    .chef { position: absolute; z-index: 0; right: 6%; top: clamp(-84px, -17vw, -62px); width: clamp(84px, 22vw, 124px); filter: drop-shadow(0 8px 8px rgba(40, 20, 0, .3)); }
+    main { position: relative; z-index: 1; padding: clamp(20px, 4.5vw, 34px) clamp(16px, 4vw, 32px) clamp(22px, 4.5vw, 34px); border-radius: 26px; background: var(--cream); border: 4px solid #fff;
+      box-shadow: 0 3px 0 rgba(74, 38, 12, .18), 0 20px 40px rgba(40, 20, 0, .3); }
+    main > :first-child { margin-top: 0; }
+    h2 { display: flex; align-items: center; gap: .5em; margin: 2rem 0 .6rem; padding: .28em .8em .3em; border-radius: 12px; background: #ffe9a8; border-bottom: 3px solid #f0c24a;
+      font-weight: 900; font-size: 1.08rem; line-height: 1.45; color: var(--ink); }
+    h2::before { content: ""; flex: none; width: .62em; height: .62em; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px #fff; }
+    p, li { margin: .4rem 0; }
     ol, ul { padding-left: 1.4rem; }
-    a { color: #b5321d; word-break: break-all; }
-    footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .9rem; }
-    footer a { margin-right: 1rem; }
+    li::marker { color: #b5321d; font-weight: 900; }
+    strong, dt, th, label { font-weight: 900; }
+    a { color: #b5321d; word-break: break-all; text-underline-offset: .2em; }
+    .table { overflow-x: auto; border-radius: 14px; border: 2px solid var(--line); background: #fff; }
+    table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+    th, td { border-bottom: 2px solid var(--line); padding: .55rem .7rem; text-align: left; vertical-align: top; }
+    th + td, td + td, th + th { border-left: 2px solid var(--line); }
+    tr:last-child > * { border-bottom: 0; }
+    th { background: #fbe9d1; color: var(--ink); }
+    
+    .note, .hint { color: var(--muted); font-size: .9rem; }
+    .bad { color: #b5321d; }
+    .id-box { margin: .75rem 0 1rem; padding: .9rem 1rem; border-radius: 18px; background: #fff; border: 3px dashed #f0c24a; }
+    .id-box label { display: block; font-size: .92rem; color: var(--ink); margin-bottom: .3rem; }
+    .id-box input { width: 100%; font-size: 1.4rem; letter-spacing: .2em; font-family: ui-monospace, Menlo, monospace; padding: .45rem .7rem;
+      border: 3px solid var(--ink); border-radius: 12px; background: var(--cream); color: var(--text); text-transform: uppercase; }
+    .mail { display: block; width: min(22em, 100%); text-align: center; margin: 1.2rem auto .7rem; padding: .7rem 1rem .75rem; border-radius: 999px; border: 3px solid var(--ink);
+      background: linear-gradient(#ffe36a, #ffc93a); color: var(--ink); font-weight: 900; font-size: 1.15rem; text-decoration: none; box-shadow: 0 6px 0 var(--ink); }
+    .mail:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--ink); }
+    .warn { margin-top: 1rem; padding: .75rem 1rem; border-radius: 14px; border: 3px solid #f0a23a; background: #fff1d6; font-size: .93rem; }
+    dl { margin: 0; }
+    dt { margin-top: 1rem; padding: .5rem .8rem; border-radius: 12px 12px 0 0; background: #fbe9d1; color: var(--ink); }
+    dd { margin: 0; padding: .55rem .8rem .65rem; border-radius: 0 0 12px 12px; background: #fff; border: 2px solid #fbe9d1; border-top: 0; }
+    footer { padding: 24px 16px max(24px, env(safe-area-inset-bottom)); background: #2b1d14; color: #f6e7d2; text-align: center; font-size: .86rem; line-height: 1.9; }
+    footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .2em 1.4em; font-size: .95rem; }
+    footer a { color: #ffd84a; word-break: normal; }
+    footer a[aria-current] { color: #f6e7d2; text-decoration: none; }
+    footer .copy { margin: 10px 0 0; opacity: .6; }
   </style>
 </head>
 <body>
+<div class="band">
+  <header class="head">
+    <a href="../"><img class="logo" src="../img/logo.webp" width="1100" height="404" alt="クックライド（COOK RIDE!）のホームページへ"></a>
+    <h1><span>利用規約</span></h1>
+    <p class="app">クックライド（COOK RIDE!）</p>
+  </header>
+  <div class="sheet">
+    <img class="chef" src="../img/chef-capybara.webp" width="501" height="760" alt="">
 <main>
-  <h1>利用規約</h1>
-  <p class="app">クックライド（COOK RIDE!）</p>
-  <p>制定日：2026年11月19日<br>改定日：2026年11月21日</p>
+  <p>制定日：2026年11月19日<br>改定日：2026年12月◯日<!-- 公開の版の前にサイトへ出す日に直す --></p>
 
   <h2>第1条（この規約について）</h2>
-  <p>本規約は、Takutonkatsu（以下「運営者」）が提供する「クックライド（COOK RIDE!）」（以下「本アプリ」）を使う時のルールです。本アプリを使うと、本規約に同意したものとみなします。</p>
-
-  <h2>第2条（アカウント）</h2>
   <ol>
-    <li>本アプリは、初めて起動した時に自動でアカウントを作ります。</li>
-    <li>1つのアカウントを同時に2台以上の端末で使うことはできません。</li>
-    <li>機種変更には、本アプリの「設定」→「その他」→「機種変更・引き継ぎ」の引き継ぎコードを使います。引き継ぎコードを控えずに端末をなくした場合、データは戻せません。</li>
-    <li>引き継ぎコードを人に教えないでください。</li>
+    <li>本規約は、Takutonkatsu（以下「運営者」）が提供するスマートフォン向けゲーム「クックライド（COOK RIDE!）」（以下「本アプリ」）を使う時のルールで、本アプリを使うすべての方（以下「利用者」）と運営者との間に適用されます。</li>
+    <li>利用者は、本規約に同意したうえで本アプリを使うものとします。本アプリを使い始めた時に、本規約に同意したものとします。</li>
+    <li>運営者が本アプリの画面やこのページで示す個別の決まり（ガチャの確率の表示、イベントの決まりなど）も、本規約の一部です。本規約と個別の決まりが食い違う時は、個別の決まりを優先します。</li>
   </ol>
 
-  <h2>第3条（表示名）</h2>
-  <p>次のような表示名は使えません。運営者は、予告なく表示名を変えてもらうことがあります。</p>
-  <ul>
-    <li>人を傷つける言葉、差別、性的な言葉</li>
-    <li>本名、電話番号、メールアドレスなどの個人情報</li>
-    <li>運営者・公式などと間違えられる名前</li>
-    <li>ほかの人や会社の名前・商標</li>
-    <li>法律や公序良俗に反するもの</li>
-  </ul>
-
-  <h2>第4条（禁止すること）</h2>
-  <ul>
-    <li>不正なツールや改造で、記録や持ち物を変えること</li>
-    <li>サーバーに大きな負担をかけること、本アプリを分解・解析すること</li>
-    <li>ほかのプレイヤーへの嫌がらせ</li>
-    <li>アカウントや持ち物の売り買い</li>
-    <li>そのほか、運営者が不適切と判断すること</li>
-  </ul>
-
-  <h2>第5条（コイン・ガチャ・持ち物）</h2>
+  <h2>第2条（未成年の方）</h2>
   <ol>
-    <li>コインはゲームの中で手に入るもので、お金で買うことはできず、お金に換えることもできません。</li>
-    <li>ガチャはコインだけで引けます。出る物と確率は、引く前の画面に表示します。</li>
-    <li>持ち物の権利は、本アプリの中で使える権利で、所有権ではありません。</li>
+    <li>未成年の方は、保護者（親権者などの法定代理人）の方の同意を得てから、本アプリを使ってください。</li>
+    <li>未成年の方が有料の商品を買う時は、必ず保護者の方の同意を得てください。iPhone・iPad の「スクリーンタイム」や「ファミリー共有」の「承認と購入のリクエスト」で、購入を保護者の方の承認制にできます。</li>
+    <li>未成年の方が、年齢を偽ったり、保護者の同意があると偽ったりして購入した時は、その購入を取り消せないことがあります（民法第21条）。</li>
   </ol>
 
-  <h2>第6条（広告と有料の商品）</h2>
+  <h2>第3条（アカウントと引き継ぎコード）</h2>
+  <ol>
+    <li>本アプリは、初めて起動した時に、自動でアカウントを作ります。</li>
+    <li>1つのアカウントを、同時に2台以上の端末で使うことはできません。</li>
+    <li>機種変更には、本アプリの「設定」→「その他」→「機種変更・引き継ぎ」で出す引き継ぎコードを使います。引き継ぎコードは、利用者が自分で控え、人に教えないでください。運営者から引き継ぎコードをお聞きすることはありません。</li>
+    <li>引き継ぎコードを控えずに端末をなくした時や、アプリを消した時は、データを戻せません。運営者は、本人かどうかを確かめる方法が無いため、お問い合わせをいただいてもデータを戻すことはできません。</li>
+    <li>引き継ぎコードを使って行われた操作は、そのアカウントの利用者が行ったものとして扱います。ただし、運営者の故意または過失によって引き継ぎコードが漏れた時は、この限りではありません。</li>
+    <li>アカウントとその中の持ち物は、利用者本人だけが使えます。人に譲ったり、貸したり、売ったりすることはできません。</li>
+  </ol>
+
+  <h2>第4条（長い間使われていないアカウント）</h2>
+  <p>最後に本アプリを使った日から3年以上使われていないアカウントは、削除することがあります。削除する時は、前もって本アプリのお知らせまたはこのページでお知らせします。「広告なし」を買っていた方は、削除の後も、同じ Apple アカウントで「購入を復元」をすると戻せます。</p>
+
+  <h2>第5条（表示名と、利用者が作るもの）</h2>
+  <ol>
+    <li>次のような表示名は使えません。
+      <ul>
+        <li>人を傷つける言葉、差別、性的な言葉、暴力的な言葉</li>
+        <li>本名、電話番号、メールアドレス、住所、SNS のアカウントなどの個人情報（自分のものも、ほかの人のものも）</li>
+        <li>運営者・公式・管理者などと間違えられる名前</li>
+        <li>ほかの人や会社の名前・商標、有名な人のなりすまし</li>
+        <li>宣伝、勧誘、ほかのサービスへの誘い</li>
+        <li>法律や公序良俗に反するもの</li>
+      </ul>
+    </li>
+    <li>運営者は、前項に当たる、または当たると疑う合理的な理由のある表示名を、前もって知らせずに、変えたり、変えてもらったりすることがあります。</li>
+    <li>表示名・本店の配置など、利用者が本アプリの中で作ったもの（以下「利用者の作ったもの」）の権利は、利用者に残ります。利用者は、運営者が、本アプリの運営と宣伝（ランキング・おすすめへの表示、ストアのページ・サイト・SNS での紹介など）のために、利用者の作ったものを、無料で、期間と地域を限らずに使うこと（表示のために形を整えることを含みます）を許します。この許しは、ほかの人への許しを妨げません。</li>
+    <li>利用者は、前項の使い方について、運営者に対して著作者人格権を行使しないものとします。</li>
+    <li>利用者は、利用者の作ったものが、ほかの人の権利を侵していないことを約束します。</li>
+  </ol>
+
+  <h2>第6条（禁止すること）</h2>
+  <p>本アプリを使う時、次のことをしてはいけません。</p>
+  <ol>
+    <li>改造したアプリ、不正なツール、自動で操作する仕組み（マクロ・ボットなど）を使うこと</li>
+    <li>不具合を、知っていてわざと使うこと、その手順を人に広めること</li>
+    <li>記録・持ち物・通信の中身を書き換えること、本来の遊び方によらずに記録や報酬を得ること</li>
+    <li>不正に記録や報酬を得るために、複数のアカウントを作ったり、使い分けたりすること</li>
+    <li>アカウント・引き継ぎコード・持ち物を、お金やほかの物と引き換えに売り買い・交換すること（リアルマネートレード）、その申し出や仲立ちをすること</li>
+    <li>ほかの人のアカウントや引き継ぎコードを使うこと</li>
+    <li>ほかのプレイヤーへの嫌がらせ、つきまとい、脅し、悪口、差別</li>
+    <li>運営者・運営者の関係者・ほかの人になりすますこと</li>
+    <li>第5条に反する表示名を使うこと</li>
+    <li>サーバーやネットワークに大きな負担をかけること、攻撃すること、ふさぐこと</li>
+    <li>本アプリやサーバーを分解・解析・改造すること（リバースエンジニアリング）、通信の中身を読み取ること、弱い所を探すこと</li>
+    <li>本アプリの絵・音楽・効果音・文などを、許しなく抜き出したり、配ったりすること（音楽や効果音のファイルを本アプリから取り出して、本アプリの外で使うことを含みます）</li>
+    <li>運営者に対して、社会の常識で考えて度を超えた要求（理由の無い補償・返金の要求、特別な扱いの要求、謝罪の強要など）をすること</li>
+    <li>同じ内容のお問い合わせを、何度も繰り返すこと</li>
+    <li>運営者やほかの人を脅すこと、乱暴な言葉を使うこと、長い時間をかけさせること</li>
+    <li>SNS などで事実と違う内容を発信すること、または発信することを示して、運営者に何かを求めること</li>
+    <li>運営者・ほかのプレイヤー・ほかの人の名誉や信用を傷つけること、プライバシーや権利を侵すこと</li>
+    <li>法律・公序良俗に反すること、犯罪につながること</li>
+    <li>上のどれかを手伝ったり、そそのかしたりすること</li>
+    <li>そのほか、上の各号と同じ程度に、本アプリの運営やほかのプレイヤーを妨げること</li>
+  </ol>
+
+  <h2>第7条（違反した時の措置）</h2>
+  <ol>
+    <li>運営者は、利用者が本規約に違反した時、または違反したと疑う合理的な理由がある時、次の措置の1つまたはいくつかをとることがあります。
+      <ul>
+        <li>記録・報酬・持ち物の取り消し、または元に戻すこと</li>
+        <li>ランキング（シーズン営業の順位表を含みます）からの除外</li>
+        <li>表示名の変更</li>
+        <li>本アプリの全部または一部の利用の一時停止</li>
+        <li>アカウントの削除（利用の契約の解除）</li>
+        <li>お問い合わせへの対応の打ち切り</li>
+      </ul>
+    </li>
+    <li>運営者は、前項の措置を、前もって知らせずにとることがあります。また、不正の手口が広がるのを防ぐため、措置の理由をお知らせしないことがあります。</li>
+    <li>措置は、違反の内容と程度に合わせて、運営者が選びます。</li>
+    <li>措置をとった時でも、すでに支払われた代金は、法律で返すことが求められる場合を除き、返しません。</li>
+    <li>措置によって利用者に損害が生じても、措置が前の各項に沿って行われた時は、運営者は責任を負いません。運営者の過失によって措置を誤った時の責任は、第18条のとおりです。</li>
+    <li>違反によって運営者が損害を受けた時は、利用者に、法律の範囲で賠償を求めることがあります。</li>
+  </ol>
+
+  <h2>第8条（コイン・ガチャ・持ち物）</h2>
+  <ol>
+    <li>コインはゲームの中で手に入るもので、お金で買うことはできません。お金やほかのサービスの物に換えることも、ほかの人に渡すこともできません。</li>
+    <li>ガチャはコインだけで引けます。出る物と確率は、引く前の画面に表示するとおりです。</li>
+    <li>シーズン営業などで受け取る★・コイン・バッジも、ゲームの中の持ち物です。</li>
+    <li>コイン・キャラクター・衣装・バッジなどの持ち物について利用者が持つのは、本規約に沿って本アプリの中で使う権利だけで、所有権などの権利ではありません。</li>
+    <li>持ち物は、アカウントの削除、第7条の措置、サービスの終了で消えます。消えた時に、お金で返すことはしません。</li>
+  </ol>
+
+  <h2>第9条（広告と有料の商品）</h2>
   <ol>
     <li>本アプリには広告が表示されます。協力プレイの部屋にいる間は表示しません。</li>
-    <li>有料の商品は、Apple のアプリ内課金で買えます。お支払い・返金は、Apple の決まりに従います。</li>
+    <li>有料の商品は、Apple のアプリ内課金で買えます。値段は購入の画面に表示します。お支払い・返金は、Apple の決まりに従います。運営者は、お支払いの情報を受け取らず、返金の手続きもできません。返金は、Apple の「問題を報告する」（<a href="https://reportaproblem.apple.com">https://reportaproblem.apple.com</a>）からお申し込みください。</li>
+    <li>デジタルの商品のため、法律で認められる場合を除き、購入の後の返品・キャンセルはできません。</li>
     <li>「広告なし」を買うと、営業の後に自動で出る広告が出なくなります。見るかどうかを選べる報酬の広告は残ります。</li>
+    <!-- 割引の品（noads.offer）をこの版で出さない時は、次の1行を消す -->
+    <li>「広告なし」は、期間を限った割引の値段でご案内することがあります。割引の前や後に買った方との差額はお返ししません。</li>
     <li>機種変更の時は、新しい端末で「購入を復元」を押すと戻せます（同じ Apple アカウントの場合）。</li>
-    <li>通信の料金は、ご利用の方の負担です。</li>
+    <li>Apple によって返金された商品は、使えなくなります。</li>
+    <li>サービスを終了した時、有料の商品の効き目も終わります。法律で返すことが求められる場合を除き、代金は返しません。</li>
   </ol>
 
-  <h2>第7条（違反した時）</h2>
-  <p>本規約に違反した時、運営者は、記録の取り消し、ランキングからの除外、アカウントの停止をすることがあります。</p>
+  <h2>第10条（ゲームの中身の変更と、記録の直し）</h2>
+  <ol>
+    <li>運営者は、本アプリをよりよくするため、ステージ・設備・キャラクター・ガチャ・報酬・ランキング・シーズン営業などの中身、強さや難しさの釣り合い、決まりを変えることがあります。</li>
+    <li>不具合や不正で、記録・順位・報酬・持ち物が正しくなくなった時、運営者は、それを直したり、取り消したり、元に戻したりすることがあります。シーズン営業の順位や報酬も、確定の後に直すことがあります。</li>
+    <li>前の2項の変更や直しは、前もって知らせずに行うことがあります。前の2項によって持ち物の値打ちや使い道が変わっても、補償はしません。運営者の法律上の責任は、第18条のとおりです。</li>
+  </ol>
 
-  <h2>第8条（サービスの変更・停止）</h2>
-  <p>運営者は、本アプリの内容を変えたり、メンテナンスなどで止めたり、終了したりすることがあります。終了する時は、前もってお知らせします。</p>
+  <h2>第11条（不具合・障害と、お詫びの配布）</h2>
+  <ol>
+    <li>運営者は、本アプリが不具合なく動くこと、利用者の目的に合うこと、いつでも使えることは約束できません。不具合を見つけた時は、できる限り直すよう努めます。不具合を見つけた方は、サポートのページからお知らせください。</li>
+    <li>不具合や障害があった時、運営者は、お詫びとしてコインなどを配ることがあります。配るかどうか、中身、配る相手は運営者が決めます。配ることは運営者の義務ではなく、利用者から求められても応じる義務はありません。</li>
+    <li>運営者の法律上の責任は、第18条のとおりです。</li>
+  </ol>
 
-  <h2>第9条（責任）</h2>
-  <p>運営者は、本アプリの不具合や停止によって生じた損害について、運営者に故意または重い過失がある場合を除き、責任を負いません。ただし、消費者契約法などの法律で認められない場合は、この限りではありません。</p>
+  <h2>第12条（データの保存）</h2>
+  <ol>
+    <li>運営者は、利用者のデータを保存するよう努めますが、障害・不具合・通信の失敗などで、データが消えたり、前の状態に戻ったりすることがあります。</li>
+    <li>利用者は、自分でデータの控え（バックアップ）をとることはできません。機種変更の時は、第3条の引き継ぎコードを使ってください。</li>
+    <li>運営者は、消えたデータを戻すことを約束できません。運営者の故意または過失によってデータが消えた時の責任は、第18条のとおりです。</li>
+  </ol>
 
-  <h2>第10条（規約の変更）</h2>
-  <p>運営者は本規約を変えることがあります。変える時は、本アプリやこのページでお知らせします。</p>
+  <h2>第13条（お問い合わせ）</h2>
+  <ol>
+    <li>お問い合わせは、サポートのページにあるメールだけで受け付けます。電話、SNS のメッセージ、郵便、面会では受け付けません。</li>
+    <li>お返事には時間がかかることがあります。また、個人情報の保護に関する法律に基づくご請求（プライバシーポリシーの11）などの法律で答えることが求められるものを除き、すべてのお問い合わせにお返事するとは限りません。不正の手口、本アプリの作り、ほかの利用者の情報、運営の判断の理由など、お答えできないこともあります。</li>
+    <li>第6条の13号から16号に当たるお問い合わせには、応じません。その後のお問い合わせにもお答えしないことがあり、第7条の措置や、法的な手続き、警察などへの相談をすることがあります。</li>
+    <li>運営者は、お問い合わせのやり取りを記録し、対応、トラブルの防止、法的な手続き、警察などへの相談に使うことがあります（プライバシーポリシーの3）。</li>
+  </ol>
 
-  <h2>第11条（法律と裁判所）</h2>
-  <p>本規約は日本の法律に従います。争いになった時は、運営者の住所を受け持つ地方裁判所を、第一審の専属の裁判所とします。</p>
+  <h2>第14条（配信・動画・画像の投稿）</h2>
+  <ol>
+    <li>本アプリを遊ぶ様子を、配信したり、動画や画像として投稿したりしてかまいません。配信・投稿の場所（YouTube など）の仕組みによる収益化も、かまいません。</li>
+    <li>次のことはしないでください。
+      <ul>
+        <li>本アプリの絵・音・映像だけを抜き出して使ったり、配ったりすること</li>
+        <li>本アプリの音楽を聴かせることが主な目的の動画や配信（音楽だけを流すものなど）</li>
+        <li>本アプリの音楽や映像を含む動画を、Content ID などの著作権を自動で見つける仕組みに登録すること</li>
+        <li>運営者の公式の物や、運営者が認めた物と間違えられる見せ方</li>
+        <li>不具合をわざと使う手順や、不正のやり方を広めること</li>
+        <li>引き継ぎコードや、ほかの人の個人情報を映すこと</li>
+        <li>運営者・ほかのプレイヤー・ほかの人の名誉や権利を傷つけること</li>
+        <li>第6条に反すること</li>
+      </ul>
+    </li>
+    <li>本アプリの素材には、ほかの作者から使う許しを得た物が含まれます。動画の場所で、音楽について著作権の申し立てを受けた時は、運営者にお知らせください。権利のある方から申し立てがあった時などは、運営者が配信や投稿を止めてもらうようお願いすることがあります。</li>
+    <li>運営者は、本条の決まりを、前もってお知らせしたうえで変えることがあります。</li>
+  </ol>
+
+  <h2>第15条（知的財産と、ご意見）</h2>
+  <ol>
+    <li>本アプリの絵・音・文・プログラム・名前などの権利は、運営者または使う許しをくれた作者にあります。本規約は、本アプリを遊ぶため以外に、これらを使う権利を利用者に与えるものではありません。</li>
+    <li>利用者からいただいたご意見・ご提案は、運営者が自由に、無料で、本アプリの改善などに使えるものとします。ご意見を使ったことについて、お礼の支払いやお知らせはしません。</li>
+  </ol>
+
+  <h2>第16条（通信・端末・ほかの会社のサービス）</h2>
+  <ol>
+    <li>本アプリは、iOS／iPadOS 15.0 以上の iPhone・iPad で使えます。遊ぶにはインターネットへの接続が必要です。動作環境の中でも、端末によっては正しく動かないことがあります。</li>
+    <li>通信の料金は、利用者の負担です。</li>
+    <li>本アプリは、Apple・Google・Supabase・Vultr などのほかの会社のサービスを使って動いています。これらのサービスの障害・停止・仕様の変更によって本アプリが使えない時、運営者に責めがない限り、運営者は責任を負いません。</li>
+  </ol>
+
+  <h2>第17条（サービスの変更・休止・終了）</h2>
+  <ol>
+    <li>運営者は、メンテナンス、障害、ほかの会社のサービスの都合、そのほかやむを得ない時、前もって知らせずに、本アプリの全部または一部を止めることがあります。前もって分かっているメンテナンスは、できる限り本アプリのお知らせでお知らせします。</li>
+    <li>運営者は、本アプリの提供を終えることがあります。終える時は、終える日の30日以上前に、本アプリのお知らせまたはこのページでお知らせします。ただし、ほかの会社のサービスの終了などで急いで終える必要がある時は、できる限り早くお知らせします。</li>
+    <li>終えた後は、持ち物と有料の商品の効き目は消えます（第8条・第9条）。</li>
+    <li>本条による休止・終了について、運営者に責めがない限り、運営者は責任を負いません。運営者に責めがある時の責任は、第18条のとおりです。</li>
+  </ol>
+
+  <h2>第18条（運営者の責任）</h2>
+  <ol>
+    <li>運営者は、本アプリについて、運営者の故意または過失によって利用者に損害が生じた時は、この条の範囲で賠償します。</li>
+    <li>運営者の過失が軽い時（故意または重大な過失によらない時）、運営者が賠償するのは、利用者に実際に生じた通常の損害に限ります。賠償の額は、損害の原因となった出来事の日より前の12か月の間に、その利用者が本アプリの有料の商品に支払った代金の合計（支払いが無い時は1,000円）を上限とします。</li>
+    <li>運営者の故意または重大な過失によって損害が生じた時は、前項の制限はありません。</li>
+    <li>本規約の各条で「運営者は責任を負いません」「補償はしません」と書いた所も、運営者の故意または過失による損害については、本条のとおり賠償します。</li>
+    <li>運営者に責めの無い出来事（利用者の端末や通信の不具合、天災、ほかの会社のサービスの障害など）による損害については、運営者は責任を負いません。</li>
+  </ol>
+
+  <h2>第19条（利用者どうしのトラブルと、利用者の責任）</h2>
+  <ol>
+    <li>利用者どうし、または利用者とほかの人との間のトラブルは、当事者の間で解決してください。運営者は、運営者に責めがある時を除き、責任を負いません。ただし、運営者は、必要と考える時に、第7条の措置をとることがあります。</li>
+    <li>利用者が本規約に違反して、運営者やほかの人に損害を与えた時は、利用者がその損害を、法律の範囲で賠償するものとします。</li>
+  </ol>
+
+  <h2>第20条（反社会的勢力の排除）</h2>
+  <ol>
+    <li>利用者は、暴力団、暴力団員、暴力団員でなくなった時から5年を経ていない人、暴力団準構成員、暴力団関係企業、総会屋、そのほかこれらに準じる人（以下「反社会的勢力」）に当たらないこと、反社会的勢力と関わりを持たないことを約束します。</li>
+    <li>利用者は、自分または人を使って、暴力的な要求、法的な責任を超えた不当な要求、脅しや暴力、うわさを流したりだましたりして運営者の信用を傷つけたり業務を妨げたりすることを、しないことを約束します。</li>
+    <li>利用者が前の2項に反した時、運営者は、前もって知らせずに、アカウントの削除（利用の契約の解除）をすることができます。これによって利用者に損害が生じても、運営者は責任を負いません。</li>
+  </ol>
+
+  <h2>第21条（運営する立場を人に譲る時）</h2>
+  <p>運営者は、本アプリの事業を人に譲る時（事業の譲渡、会社にする時などを含みます）、本規約の上の運営者の立場、権利と義務、利用者の情報（プライバシーポリシーのとおり）を、譲る相手に移すことができます。利用者は、このことに、前もって同意します。</p>
+
+  <h2>第22条（お知らせの方法）</h2>
+  <ol>
+    <li>運営者から利用者へのお知らせは、本アプリのお知らせ、このページ、または運営者が適切と考える方法で行います。</li>
+    <li>お知らせは、本アプリやこのページに出した時から効き目があるものとします。</li>
+  </ol>
+
+  <h2>第23条（規約の変更）</h2>
+  <ol>
+    <li>運営者は、次のどれかに当たる時、民法第548条の4に沿って、利用者の個別の同意なしに本規約を変えることがあります。
+      <ul>
+        <li>変更が、利用者全体の利益に合う時</li>
+        <li>変更が、本アプリを使う契約の目的に反せず、変更の必要性、変更後の内容の相当性、そのほかの事情に照らして合理的な時</li>
+      </ul>
+    </li>
+    <li>変える時は、変えること、変えた後の内容、効き目が始まる日を、効き目が始まる日より前に、本アプリのお知らせまたはこのページでお知らせします。利用者にとって不利な変更は、効き目が始まる日の14日前までにお知らせします。</li>
+    <li>効き目が始まった後に本アプリを使った利用者は、変えた後の規約に従うものとします。</li>
+  </ol>
+
+  <h2>第24条（一部が無効な時）</h2>
+  <p>本規約の一部が、消費者契約法などの法律によって無効または取り消しとされても、ほかの部分はそのまま効き目を持ちます。無効または取り消しとされた部分も、法律で認められる限りで、その趣旨に最も近い形で効き目を持つものとします。</p>
+
+  <h2>第25条（言葉・法律・裁判所）</h2>
+  <ol>
+    <li>本規約は日本語の文を正とします。ほかの言葉に訳した物がある時も、日本語の文が優先します。</li>
+    <li>本規約は、日本の法律に従います。</li>
+    <li>本アプリや本規約について争いになった時は、訴えの額に応じて、運営者の住所を受け持つ簡易裁判所または地方裁判所を、第一審の専属の裁判所とします。</li>
+  </ol>
 
   <h2>お問い合わせ</h2>
-  <p><a href="https://takutonkatsu.com/cookride/support/">サポートのページ</a>、またはメール <a href="mailto:takutonkatsu.dev@gmail.com">takutonkatsu.dev@gmail.com</a></p>
-
-  <footer>
-    <a href="https://takutonkatsu.com/cookride/privacy/">プライバシーポリシー</a>
-    <a href="https://takutonkatsu.com/cookride/support/">サポート</a>
-    <a href="https://takutonkatsu.com/cookride/law/">特定商取引法に基づく表記</a>
-  </footer>
+  <p><a href="https://takutonkatsu.com/cookride/support/">サポートのページ</a>、またはメール <a href="mailto:takutonkatsu.dev@gmail.com">takutonkatsu.dev@gmail.com</a>（お問い合わせはメールだけで受け付けています）</p>
 </main>
+  </div>
+</div>
+<footer>
+  <nav>
+    <a href="../">ホームページ</a>
+    <a href="../support/">サポート</a>
+    <a href="../privacy/">プライバシーポリシー</a>
+    <a href="../terms/" aria-current="page">利用規約</a>
+    <a href="../law/">特定商取引法に基づく表記</a>
+  </nav>
+  <p class="copy">© 2026 Takutonkatsu</p>
+</footer>
 </body>
 </html>
