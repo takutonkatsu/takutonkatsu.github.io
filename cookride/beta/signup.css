@@ -1,0 +1,57 @@
+[hidden] { display: none !important; }
+.sheet { margin-top: clamp(24px, 5vw, 44px); }
+main { padding-top: clamp(15px, 4vw, 26px); }
+video { display: block; width: 100%; height: auto; aspect-ratio: 480 / 220; background: #2b1d14; border-radius: 13px; }
+.intro { margin-top: 1rem; }
+fieldset { margin: 1rem 0; padding: 0; border: 0; min-inline-size: 0; }
+legend { padding: 0 0 .45rem; }
+fieldset > label, .check, .read-confirmation {
+  margin: .5rem 0;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+fieldset label, .read-confirmation {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  padding: .65rem .75rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+input[type="checkbox"] { flex: none; width: 1.2rem; height: 1.2rem; margin: .26em 0 0; accent-color: #9f2329; }
+.contact { display: block; padding: 0 .75rem .65rem 2.6rem; }
+.email label { display: block; margin-bottom: .3rem; }
+.email .note a { display: inline-block; word-break: normal; }
+.email input {
+  display: block;
+  width: 100%;
+  padding: .6rem .75rem;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+}
+button.mail { font-family: inherit; cursor: pointer; }
+button.mail:disabled { background: #efdfc6; color: #645348; border-color: #726151; box-shadow: none; cursor: default; }
+button.mail:disabled:active { transform: none; }
+:focus-visible { outline: 3px solid #815508; outline-offset: 3px; }
+.application-step > h2 { margin-top: 0; }
+#application-guide a[href^="mailto:"] { display: inline-block; max-width: 100%; overflow-wrap: anywhere; word-break: normal; }
+.read-confirmation { font-weight: 900; }
+.back-button {
+  display: block;
+  min-height: 44px;
+  margin: .8rem auto 0;
+  padding: .35rem .75rem;
+  border: 0;
+  background: none;
+  color: #b5321d;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+  cursor: pointer;
+}
+#signup-status { color: #8c231b; }
+#signup-status:empty { display: none; }
