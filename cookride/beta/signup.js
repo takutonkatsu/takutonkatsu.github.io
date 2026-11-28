@@ -1,27 +1,64 @@
 import { anonKey } from "./supabase-config.js";
 
 const endpoint = "https://hxtjrvnvviugnvqfyzgd.supabase.co/rest/v1/rpc/register_cookride_beta";
+const overview = document.querySelector("#overview");
+const guide = document.querySelector("#application-guide");
+const signup = document.querySelector("#signup");
+const registered = document.querySelector("#registered");
+const start = document.querySelector("#start-application");
+const guideForm = document.querySelector("#guide-form");
+const guideRead = document.querySelector("#guide-read");
+const continueToSignup = document.querySelector("#continue-to-signup");
+const backToGuide = document.querySelector("#back-to-guide");
 const form = document.querySelector("#signup-form");
 const email = document.querySelector("#email");
 const button = form.querySelector("button");
 const status = document.querySelector("#signup-status");
 let sending = false;
 
-function updateButton() {
-  button.disabled = sending || !form.checkValidity();
+function updateButtons() {
+  continueToSignup.disabled = !guideRead.checked;
+  button.disabled = sending || !guideRead.checked || !form.checkValidity();
+  backToGuide.disabled = sending;
 }
 
-form.hidden = false;
-form.addEventListener("input", updateButton);
-window.addEventListener("pageshow", updateButton);
-updateButton();
+function showStep(step) {
+  for (const section of [overview, guide, signup, registered]) {
+    section.hidden = section !== step;
+  }
+  if (step !== overview) overview.querySelector("video").pause();
+  const focusTarget = step === overview ? start : step.querySelector("h2");
+  focusTarget.focus({ preventScroll: true });
+  window.scrollTo(0, 0);
+}
+
+start.hidden = false;
+start.addEventListener("click", () => showStep(guide));
+document.querySelector("#back-to-overview").addEventListener("click", () => {
+  guideForm.reset();
+  updateButtons();
+  showStep(overview);
+});
+backToGuide.addEventListener("click", () => showStep(guide));
+guideForm.addEventListener("input", updateButtons);
+guideForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (!guide.hidden && guideRead.checked) showStep(signup);
+});
+form.addEventListener("input", updateButtons);
+window.addEventListener("pageshow", updateButtons);
+guideForm.reset();
+updateButtons();
+
+// Open the required guide even if an older link points at the consent heading.
+if (["#application-guide", "#signup-heading"].includes(location.hash)) showStep(guide);
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  if (sending || !form.reportValidity()) return;
+  if (signup.hidden || sending || !guideRead.checked || !form.reportValidity()) return;
 
   sending = true;
-  updateButton();
+  updateButtons();
   status.textContent = "申し込みを送信しています…";
   const timeout = new AbortController();
   const timer = window.setTimeout(() => timeout.abort(), 15000);
@@ -52,11 +89,8 @@ form.addEventListener("submit", async (event) => {
     }
 
     document.querySelector("#invitation").href = url;
-    document.querySelector("#overview").hidden = true;
-    document.querySelector("#signup").hidden = true;
-    document.querySelector("#registered").hidden = false;
-    document.querySelector("#registered-heading").focus();
-    window.scrollTo(0, 0);
+    showStep(registered);
+    guideForm.reset();
     form.reset();
     status.textContent = "";
   } catch {
@@ -64,6 +98,6 @@ form.addEventListener("submit", async (event) => {
   } finally {
     window.clearTimeout(timer);
     sending = false;
-    updateButton();
+    updateButtons();
   }
 });

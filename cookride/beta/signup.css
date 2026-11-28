@@ -5,13 +5,13 @@ video { display: block; width: 100%; height: auto; aspect-ratio: 480 / 220; back
 .intro { margin-top: 1rem; }
 fieldset { margin: 1rem 0; padding: 0; border: 0; min-inline-size: 0; }
 legend { padding: 0 0 .45rem; }
-fieldset > label, .check {
+fieldset > label, .check, .read-confirmation {
   margin: .5rem 0;
   border: 2px solid var(--line);
   border-radius: 12px;
   background: #fff;
 }
-fieldset label {
+fieldset label, .read-confirmation {
   display: flex;
   align-items: flex-start;
   gap: .65rem;
@@ -37,6 +37,21 @@ button.mail { font-family: inherit; cursor: pointer; }
 button.mail:disabled { background: #efdfc6; color: #645348; border-color: #726151; box-shadow: none; cursor: default; }
 button.mail:disabled:active { transform: none; }
 :focus-visible { outline: 3px solid #815508; outline-offset: 3px; }
-#registered-heading { margin-top: 0; }
+.application-step > h2 { margin-top: 0; }
+#application-guide a[href^="mailto:"] { display: inline-block; max-width: 100%; overflow-wrap: anywhere; word-break: normal; }
+.read-confirmation { font-weight: 900; }
+.back-button {
+  display: block;
+  min-height: 44px;
+  margin: .8rem auto 0;
+  padding: .35rem .75rem;
+  border: 0;
+  background: none;
+  color: #b5321d;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+  cursor: pointer;
+}
 #signup-status { color: #8c231b; }
 #signup-status:empty { display: none; }
