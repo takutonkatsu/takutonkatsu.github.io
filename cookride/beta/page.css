@@ -44,3 +44,31 @@ footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .2em 
 footer a { color: #ffd84a; word-break: normal; }
 footer a[aria-current] { color: #f6e7d2; text-decoration: none; }
 footer .copy { margin: 10px 0 0; opacity: .6; }
+.report-examples {
+  display: grid;
+  gap: .85rem;
+  margin: 1rem 0;
+}
+.report-examples figure { min-width: 0; margin: 0; }
+.report-examples img { width: 100%; border-radius: 10px; }
+.report-examples figcaption { margin-top: .25rem; font-size: .9rem; }
+.report-example-home, .report-example-kitchen { position: relative; }
+.report-example-home { --report-x: 47.17%; }
+.report-example-kitchen { --report-x: 76.97%; }
+.report-example-home::after, .report-example-kitchen::after {
+  position: absolute;
+  left: var(--report-x);
+  top: 9.4%;
+  width: 7.6%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: clamp(2px, .55vw, 4px) solid #e20b18;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #fff;
+  content: "";
+  pointer-events: none;
+}
+@media (min-width: 640px) {
+  .report-examples { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .report-example-sheet { grid-column: 1 / -1; }
+}
