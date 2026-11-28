@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; media-src 'self'; script-src 'self'; connect-src https://hxtjrvnvviugnvqfyzgd.supabase.co; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#46bec8">
+  <meta name="description" content="お店を育てる料理アクション『クックライド』。iPhone・iPadで遊べるβテストに参加しませんか。">
+  <link rel="icon" href="../img/icon.png">
+  <link rel="stylesheet" href="page.css">
+  <link rel="stylesheet" href="signup.css">
+  <script type="module" src="signup.js"></script>
+  <title>βテスター募集｜クックライド（COOK RIDE!）</title>
+</head>
+<body>
+<div class="band">
+  <header class="head">
+    <a href="../"><img class="logo" src="../img/logo.webp" width="1100" height="404" alt="クックライド（COOK RIDE!）のホームページへ"></a>
+    <h1><span>βテスター募集</span></h1>
+    <p class="app">iPhone・iPad</p>
+  </header>
+  <div class="sheet">
+    <main>
+      <section id="overview" aria-label="募集案内">
+        <video controls playsinline preload="metadata" poster="poster.jpg" width="480" height="220" aria-label="クックライドの30秒紹介動画">
+          <source src="preview.mp4" type="video/mp4">
+          <a href="preview.mp4">紹介動画を開く</a>
+        </video>
+        <p class="intro">料理をつくって、運んで、お店を育てるアクションゲーム。ひとりでじっくり、協力プレイでは分担して営業できます。</p>
+        <a class="mail" href="#signup-heading">βテストに申し込む</a>
+        <h2>テストで遊んでほしいこと</h2>
+        <p>料理を作る・運ぶ操作や、ひとりで出張営業、協力プレイを試してください。動かない場面や分かりにくいところがあれば、ゲーム内の「気づいたことを送る」から教えてください。</p>
+        <p><a href="guide/">βテストのご案内を見る</a></p>
+      </section>
+      <section id="signup" aria-labelledby="signup-heading">
+        <h2 id="signup-heading">参加前にご確認ください</h2>
+        <noscript><p>申し込みには JavaScript が必要です。ブラウザの設定を確認してから、ページを開き直してください。</p></noscript>
+        <form id="signup-form" hidden>
+          <fieldset>
+            <legend>以下すべてにチェックしてください。</legend>
+            <label><input type="checkbox" required><span>遊んだ記録やセーブなど、テストのデータは正式公開前にすべて消えます。</span></label>
+            <label><input type="checkbox" required><span>ゲームの画面や内容は、SNS・動画・配信などで公開しません。</span></label>
+            <label><input type="checkbox" required><span>開発中のため不具合があり、正常に動くことやセーブが残ることの保証はありません。</span></label>
+            <label><input type="checkbox" required><span>遊んだ記録や、報告に含まれる写真・端末情報が、ゲームの改善のために送られます。</span></label>
+            <label><input type="checkbox" required><span>TestFlight の招待リンクは他の人に渡しません。</span></label>
+            <label><input type="checkbox" required><span>18歳未満の方は保護者の同意を得てから参加します。</span></label>
+            <div class="check">
+              <label><input type="checkbox" required><span>TestFlight のクックライドの画面で「テストを停止」を選べば参加をやめられます。問い合わせや登録メールアドレスの削除は運営者に連絡します。</span></label>
+              <a class="contact" href="mailto:cookride@takutonkatsu.com">cookride@takutonkatsu.com</a>
+            </div>
+          </fieldset>
+          <div class="email">
+            <label for="email">メールアドレス</label>
+            <input id="email" type="email" autocomplete="email" spellcheck="false" autocapitalize="off" maxlength="254" required aria-describedby="email-note">
+            <p class="note" id="email-note">βテストの連絡・案内に使います。取り扱いは<a href="../privacy/#beta-signup">プライバシーポリシー</a>をご覧ください。</p>
+          </div>
+          <button class="mail" type="submit" disabled>同意して申し込む</button>
+          <p id="signup-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+      <section id="registered" aria-labelledby="registered-heading" hidden>
+        <h2 id="registered-heading" tabindex="-1">申し込みを受け付けました</h2>
+        <a class="mail" id="invitation" rel="noreferrer">TestFlight の招待を開く</a>
+        <h3>入れ方（3分ほど）</h3>
+        <ol>
+          <li>App Store で「<a href="https://apps.apple.com/jp/app/testflight/id899247664">TestFlight</a>」を入れます。</li>
+          <li>この画面の「TestFlight の招待を開く」を押します。</li>
+          <li>「クックライド」をインストールします。</li>
+        </ol>
+        <p>遊べるのは iPhone と iPad です。TestFlight から更新の知らせが来たら、更新をお願いします。</p>
+        <p>アプリを開いた時に「新しい版が出ています」と出たら、TestFlight のアプリを開き、「クックライド」の「アップデート」を押してください。札には「App Store で更新」と書いてありますが、βテストの間は TestFlight からの更新になります。更新しても、進み具合やコインはそのまま残ります。</p>
+        <p><a href="guide/">βテストのご案内を見る</a></p>
+      </section>
+    </main>
+  </div>
+</div>
+<footer>
+  <nav aria-label="関連ページ">
+    <a href="../">クックライド</a>
+    <a href="guide/">βテストのご案内</a>
+    <a href="../support/">サポート</a>
+    <a href="../privacy/">プライバシーポリシー</a>
+    <a href="../terms/">利用規約</a>
+  </nav>
+  <p class="copy">© 2026 Takutonkatsu</p>
+</footer>
+</body>
+</html>
